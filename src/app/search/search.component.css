@@ -1,31 +1,33 @@
 .searchInput {
     width:100%;
-    height: 50px;
+    height: 35px;
     border-radius: 0px;
     outline: none;
     font-family: "Roboto";
-    font-size: 17px;
+    font-size: 20px;
     background-color: transparent;
     border: none;    
-    color:lightgray;
+    color:white;
+    border-bottom: 2px solid gray;
+    padding-bottom: 5px;
+    padding-top: 10px;
 }
 .myBtn {
     color: lightgray;
     width: 100%;
-    height: 50px;
     font-family: "Roboto-Regular";
     font-size: 15px;
-    border-radius: 0px;
-    text-transform: uppercase;
+    border-radius: 20px;
     background-color: transparent;
-    border: none;    
+    border: 1px solid lightgray;
+    outline: none;
 }
 .tile{
     height: 100px;
     width: 100%; 
     background-color: transparent;
     font-family: "Roboto";
-    font-size:15px;
+    font-size:16px;
     color: lightgray;
 }
 .tile:hover {
@@ -34,7 +36,7 @@
 }
 .subsBtn {
     font-family: "Roboto-Regular";
-    font-size: 15px;
+    font-size: 13px;
     border-radius: 20px;
     border: 1px solid lightgray;
     background-color: transparent;
@@ -42,12 +44,17 @@
     uppercase;
     color:lightgray;
     vertical-align: center;
+    text-transform: lowercase;
+    margin-top: 30px;
+    outline: none;
 }
 .subsBtn:hover {
     color: white;
+    border-color: white;
 }
 .myLayout {
     background-color: #1d1d1d;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
     border: none;
     height: 100vh; 
     width: 100%;
@@ -56,4 +63,8 @@
     height: 90px;
     width: 10px;
     margin-top: 5px;
+}
+.badge {
+    background-color: transparent;
+    border: 1px solid lightgray;
 }

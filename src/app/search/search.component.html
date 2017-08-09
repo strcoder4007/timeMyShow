@@ -8,21 +8,29 @@
     </div>
 </div>
 <div class="row gutter-0" style="height:calc(100vh - 50px); width: 100%; overflow: auto">
-    <div *ngFor="let show of shows" class="row tile">
+    <div (click)="currentId=show.show.id; showMore = !showMore;" *ngFor="let show of shows; let i = index;" class="row tile">
         <div class="col-md-1">
             <img src="{{show.show.image.medium || show.show.image}}" height="100px" width="75px">
         </div>
-        <div class="col-md-8">
-            <span>{{show.show.name}}&nbsp;({{show.show.premiered.split('-')[0]}})</span>
+        <div class="col-md-7">
+            <span><b>{{show.show.name}}</b>&nbsp;({{show.show.premiered.split('-')[0]}})</span>
             <span class="badge"><i class="fa fa-star"></i>&nbsp;{{show.show.rating.average || '?'}}</span><br>
-            <span style="font-size: 15px">Genre: </span><span style="font-size: 15px" *ngFor="let genre of show.show.genres">{{genre}}&nbsp;</span><br>
+            <span style="font-size: 14px">Runtime: </span>
+            <span style="font-size: 14px" *ngIf="show.show.runtime <= 5">{{show.show.runtime}} hours</span>
+            <span style="font-size: 14px" *ngIf="show.show.runtime > 5">{{show.show.runtime}} minutes</span>
+            <br>
+            <span style="font-size: 14px">Genre: </span>
+            <span style="font-size: 14px" *ngFor="let genre of show.show.genres">{{genre}}&nbsp;</span>
+            <br>
+            <span style="font-size: 14px">Seasons: </span>
+            <span style="font-size: 14px">{{seasons[i].length}}&nbsp;(~{{seasons[i][seasons[i].length-1].episodeOrder}} episodes/season)</span>
         </div>
-        <div class="col-md-1">
-            <button (click)="subscribe(show.show.id)" class="btn subsBtn">Subscribe</button>
-        </div>
-        <div class="col-md-2">
-                <div class="row gutter-0 status pull-right" [style.background-color]="this.colors[show.show.status]" title="Show's {{show.show.status}}">
-                </div>
+        <div class="col-md-4">
+            <button (click)="subscribe(show.show.id)" class="btn subsBtn">+&nbsp;subscribe</button>
+            <button routerLink="/episode" class="btn subsBtn">all episodes</button>
+            <button routerLink="/episode" class="btn subsBtn">more</button>
+            <div class="row gutter-0 status pull-right" [style.background-color]="this.colors[show.show.status]" title="Show's {{show.show.status}}">
+            </div>
         </div>
     </div>
 </div>
