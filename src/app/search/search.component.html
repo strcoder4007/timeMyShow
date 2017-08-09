@@ -1,3 +1,19 @@
-<p>
-  search works!
-</p>
+<div class="row gutter-0" style="height: 100vh; width: 100%; background-color: #1d1d1d">
+<div class="row gutter-0" style="height: 50px">
+    <div class="col-xs-11">
+        <input id="focusThis" type="text" [(ngModel)]="show" class="searchInput" placeholder="search for shows...">
+    </div>
+    <div class="col-xs-1">
+        <button class="btn myBtn" (click)="search(show); showImage = true">search</button>
+    </div>
+</div>
+<div class="row gutter-0" style="height:calc(100vh - 50px); width: 100%; overflow: auto">
+    <div *ngFor="let show of shows" class="row gutter-0" style="height: 100px; width: 100%; background-color: #1d1d1d; border-bottom: 1px solid gray">
+        <img src="{{show.show.image.medium}}" height="100%" width="70px">
+        <span class="tile">{{show.show.name}}</span>
+        <span class="tile">({{show.show.id}})</span>
+        <span class="tile">{{show.show.status}}</span>
+        <button (click)="subscribe(show.show.id)" class="btn btn-danger subsBtn pull-right">Subscribe</button>
+    </div>
+</div>
+</div>

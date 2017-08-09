@@ -1,0 +1,26 @@
+.searchInput {
+    width: 100%;
+    height: 50px;
+    border: 0px;
+    border-radius: 0px;
+    outline: none;
+    font-family: "Roboto-Regular";
+    font-size: 25px;
+}
+.myBtn {
+    width: 100%;
+    height: 50px;
+    font-family: "Roboto-Regular";
+    font-size: 18px;
+    border-radius: 0px;
+}
+.tile {
+    font-family: "Roboto-Thin";
+    font-size:40px;
+    color: lightgray;
+}
+.subsBtn {
+    font-family: "Roboto-Regular";
+    font-size: 18px;
+    border-radius: 0px;
+}

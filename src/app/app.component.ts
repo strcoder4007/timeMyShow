@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit{        
 
-    ngOnInit() {
 
+    constructor(public http: Http) {   
+    }
+
+    getposts() {
+        return this.http.get('').map(res => res.json());
+    }
+
+    ngOnInit() {
+        this.getposts().subscribe((posts) => {
+        })
     }        
 
 }

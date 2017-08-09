@@ -1,9 +1,10 @@
 .links {
-    text-align: center;
-    padding-top: 10px;
+    text-align: left;
+    font-family: "Roboto-Medium";
 }
 .sidebar-nav .navbar .navbar-collapse {
-    padding: 0;
+    padding: 0px !important;
+    margin: 0px !important;
     max-height: none;
   }
   .sidebar-nav .navbar ul {
@@ -14,10 +15,16 @@
     float: none;
     display: block;
   }
-  .sidebar-nav .navbar li a {
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
-  .navbar {
+.navbar {
       height: 100vh;
-  }
+      background-color: #222;
+      color: white;
+      padding: 0px !important;
+      margin: 0px !important;
+      border-radius: 0px;
+}
+.navbar-collapse {
+    padding: 0px !important;
+    margin: 0px !important;
+    border-radius: 0px;
+}
