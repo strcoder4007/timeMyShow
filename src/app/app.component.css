@@ -1,6 +1,7 @@
 .links {
     text-align: left;
     font-family: "Roboto-Medium";
+    text-transform: uppercase;
 }
 .sidebar-nav .navbar .navbar-collapse {
     padding: 0px !important;
@@ -17,14 +18,19 @@
   }
 .navbar {
       height: 100vh;
-      background-color: #222;
       color: white;
       padding: 0px !important;
       margin: 0px !important;
       border-radius: 0px;
+      border: none;
+      background: #222;
+      
 }
 .navbar-collapse {
     padding: 0px !important;
     margin: 0px !important;
     border-radius: 0px;
+}
+.activeLink{
+    background-color: #1d1d1d;
 }

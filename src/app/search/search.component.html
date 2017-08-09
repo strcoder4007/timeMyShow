@@ -1,4 +1,4 @@
-<div class="row gutter-0" style="height: 100vh; width: 100%; background-color: #1d1d1d">
+<div class="row gutter-0 myLayout">
 <div class="row gutter-0" style="height: 50px">
     <div class="col-xs-11">
         <input id="focusThis" type="text" [(ngModel)]="show" class="searchInput" placeholder="search for shows...">
@@ -8,12 +8,22 @@
     </div>
 </div>
 <div class="row gutter-0" style="height:calc(100vh - 50px); width: 100%; overflow: auto">
-    <div *ngFor="let show of shows" class="row gutter-0" style="height: 100px; width: 100%; background-color: #1d1d1d; border-bottom: 1px solid gray">
-        <img src="{{show.show.image.medium}}" height="100%" width="70px">
-        <span class="tile">{{show.show.name}}</span>
-        <span class="tile">({{show.show.id}})</span>
-        <span class="tile">{{show.show.status}}</span>
-        <button (click)="subscribe(show.show.id)" class="btn btn-danger subsBtn pull-right">Subscribe</button>
+    <div *ngFor="let show of shows" class="row tile">
+        <div class="col-md-1">
+            <img src="{{show.show.image.medium || show.show.image}}" height="100px" width="75px">
+        </div>
+        <div class="col-md-8">
+            <span>{{show.show.name}}&nbsp;({{show.show.premiered.split('-')[0]}})</span>
+            <span class="badge"><i class="fa fa-star"></i>&nbsp;{{show.show.rating.average || '?'}}</span><br>
+            <span style="font-size: 15px">Genre: </span><span style="font-size: 15px" *ngFor="let genre of show.show.genres">{{genre}}&nbsp;</span><br>
+        </div>
+        <div class="col-md-1">
+            <button (click)="subscribe(show.show.id)" class="btn subsBtn">Subscribe</button>
+        </div>
+        <div class="col-md-2">
+                <div class="row gutter-0 status pull-right" [style.background-color]="this.colors[show.show.status]" title="Show's {{show.show.status}}">
+                </div>
+        </div>
     </div>
 </div>
 </div>

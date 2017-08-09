@@ -1,26 +1,59 @@
 .searchInput {
-    width: 100%;
+    width:100%;
     height: 50px;
-    border: 0px;
     border-radius: 0px;
     outline: none;
-    font-family: "Roboto-Regular";
-    font-size: 25px;
+    font-family: "Roboto";
+    font-size: 17px;
+    background-color: transparent;
+    border: none;    
+    color:lightgray;
 }
 .myBtn {
+    color: lightgray;
     width: 100%;
     height: 50px;
     font-family: "Roboto-Regular";
-    font-size: 18px;
+    font-size: 15px;
     border-radius: 0px;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;    
 }
-.tile {
-    font-family: "Roboto-Thin";
-    font-size:40px;
+.tile{
+    height: 100px;
+    width: 100%; 
+    background-color: transparent;
+    font-family: "Roboto";
+    font-size:15px;
     color: lightgray;
+}
+.tile:hover {
+    background-color: #1a1a1a;
+    color: white;
 }
 .subsBtn {
     font-family: "Roboto-Regular";
-    font-size: 18px;
-    border-radius: 0px;
+    font-size: 15px;
+    border-radius: 20px;
+    border: 1px solid lightgray;
+    background-color: transparent;
+    text-transform: 
+    uppercase;
+    color:lightgray;
+    vertical-align: center;
+}
+.subsBtn:hover {
+    color: white;
+}
+.myLayout {
+    background-color: #1d1d1d;
+    border: none;
+    height: 100vh; 
+    width: 100%;
+}
+.status {
+    height: 90px;
+    width: 10px;
+    margin-top: 5px;
 }
