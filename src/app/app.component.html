@@ -1,20 +1,28 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
+<div class="row gutter-0">
+    <div class="col-sm-2">
+        <div class="sidebar-nav">
+            <div class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <span class="visible-xs navbar-brand">Time My Show</span>
+                </div>
+                <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a routerLink="/subs"><img class="icon icons8-Monitor center-block" width="100%" height="100%" src="data:image/png;base64,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"></a></li>
+                        <li class="links"  routerLinkActive="active"><a routerLink="/subs">Subscriptions</a></li>
+                        <li class="links"  routerLinkActive="active"><a routerLink="/search">Add Show</a></li>
+                        <li class="links" routerLinkActive="active"><a routerLink="/about">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-10" style="height: 100vh; max-height: 100vh">
+        <router-outlet></router-outlet>
+    </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="http://angularjs.blogspot.ca/">Angular blog</a></h2>
-  </li>
-</ul>
-
