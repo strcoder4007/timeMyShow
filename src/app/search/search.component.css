@@ -1,71 +1,58 @@
-.searchInput {
-    width:100%;
-    height: 35px;
-    border-radius: 0px;
-    outline: none;
-    font-family: "Roboto";
-    font-size: 20px;
-    background-color: transparent;
-    border: none;    
-    color:white;
-    border-bottom: 2px solid gray;
-    padding-bottom: 5px;
-    padding-top: 10px;
-}
-.myBtn {
-    color: lightgray;
-    width: 100%;
-    font-family: "Roboto-Regular";
-    font-size: 15px;
-    border-radius: 20px;
-    background-color: transparent;
-    border: 1px solid lightgray;
-    outline: none;
-}
 .tile{
-    height: 100px;
+    min-height: 150px;
     width: 100%; 
-    background-color: transparent;
+    background-color: #222;
     font-family: "Roboto";
     font-size:16px;
     color: lightgray;
-}
-.tile:hover {
-    background-color: #1d1d1d;
-    color: white;
+    margin-top: 15px;
+    border-right: 10px solid #1db954;
 }
 .subsBtn {
     font-family: "Roboto-Regular";
-    font-size: 13px;
-    border-radius: 20px;
-    border: 1px solid lightgray;
-    background-color: transparent;
+    font-size: 15px;
+    border-radius: 2px;
+    border: 2px solid #008f76;
+    background-color: 
+    transparent;
     text-transform: 
     uppercase;
-    color:lightgray;
+    color:#008f76;
     vertical-align: center;
-    text-transform: lowercase;
-    margin-top: 30px;
     outline: none;
+    height: 40px;
+    width: 130px;
+    margin-top: 7.2px;
 }
 .subsBtn:hover {
-    color: white;
+    color: whitesmoke;
     border-color: white;
 }
 .myLayout {
     background-color: #222;
     border: none;
-    min-height: calc(100vh - 200px); 
+    min-height: calc(100vh - 180px); 
     max-height: none;
     width: 100%;
     padding-top: 20px;
 }
 .status {
-    height: 90px;
+    height: 150px;
     width: 10px;
-    margin-top: 5px;
 }
 .badge {
     background-color: transparent;
     border: 1px solid lightgray;
+    font-family: "Roboto";
+    font-size: 18px;
+    color: whitesmoke;
+}
+.myImg {
+    position: absolute;
+    left: 0;
+}
+.name {
+    font-family: "Roboto";
+    font-size: 20px;
+    color: whitesmoke;
 }

@@ -1,28 +1,26 @@
 <div class="row gutter-0 myLayout">
-    <div class="container" style="padding: 5px;">
-    <div (click)="currentId=show.show.id; showMore = !showMore;" *ngFor="let show of shows; let i = index;" class="row tile">
+    <div class="container">
+    <div (click)="currentId=show.show.id; showMore = !showMore;" *ngFor="let show of shows; let i = index;" class="tile">
         <div class="col-md-1 col-sm-4">
-            <img src="{{show.show.image.medium || show.show.image}}" height="100px" width="75px">
+            <img src="{{show.show.image.medium || show.show.image}}" height="150px" width="100px" class="myImg">
         </div>
-        <div class="col-md-7 col-sm-6">
-            <span><b>{{show.show.name}}</b>&nbsp;({{show.show.premiered.split('-')[0]}})</span>
+        <div class="col-md-9 col-sm-6">
+            <span class="name"><b>{{show.show.name}}</b>&nbsp;({{show.show.premiered.split('-')[0]}})</span>
             <span class="badge"><i class="fa fa-star"></i>&nbsp;{{show.show.rating.average || '?'}}</span><br>
-            <span style="font-size: 14px">Runtime: </span>
-            <span style="font-size: 14px" *ngIf="show.show.runtime <= 5">{{show.show.runtime}} hours</span>
-            <span style="font-size: 14px" *ngIf="show.show.runtime > 5">{{show.show.runtime}} minutes</span>
+            <span style="font-size: 16px">Runtime: </span>
+            <span style="font-size: 16px" *ngIf="show.show.runtime <= 5">{{show.show.runtime}} hours</span>
+            <span style="font-size: 16px" *ngIf="show.show.runtime > 5">{{show.show.runtime}} minutes</span>
             <br>
-            <span style="font-size: 14px">Genre: </span>
-            <span style="font-size: 14px" *ngFor="let genre of show.show.genres">{{genre}}&nbsp;</span>
+            <span style="font-size: 16px">Genre: </span>
+            <span style="font-size: 16px" *ngFor="let genre of show.show.genres">{{genre}}&nbsp;</span>
             <br>
-            <span style="font-size: 14px">Seasons: </span>
-            <span style="font-size: 14px">{{seasons[i].length || 0}}&nbsp;(~{{seasons[i][seasons[i].length-1 || 0].episodeOrder || 0}} episodes/season)</span>
+            <span style="font-size: 16px">Seasons: </span>
+            <span style="font-size: 16px">{{seasons[i].length || 0}}&nbsp;(~{{seasons[i][seasons[i].length-1 || 0].episodeOrder || 0}} episodes/season)</span>
         </div>
-        <div class="col-md-4 col-sm-2">
-            <button (click)="subscribe(show.show.id)" class="btn subsBtn">+&nbsp;subscribe</button>
-            <button routerLink="/episode" class="btn subsBtn">all episodes</button>
+        <div class="col-md-2 col-sm-2">
+            <button (click)="subscribe(show.show.id)" class="btn subsBtn">+&nbsp;subscribe</button><br>
+            <button routerLink="/episode" class="btn subsBtn">all episodes</button><br>
             <button routerLink="/episode" class="btn subsBtn">more</button>
-            <div class="row gutter-0 status pull-right" [style.background-color]="this.colors[show.show.status]" title="Show's {{show.show.status}}">
-            </div>
         </div>
     </div>
     </div>

@@ -21,7 +21,6 @@ export class AppComponent implements OnInit{
     eventHandler(ev) {
         if(ev.keyCode == 13) {
             this.showSearch = true;
-            alert("emitted!");
         }
     }
 

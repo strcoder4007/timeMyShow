@@ -1,6 +1,6 @@
 
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 8px;
 }
 
 html {
@@ -8,12 +8,12 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-    background-color: black;
+    background-color: #222;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: white;
-    border-left: 1px solid gray;
+    background-color: #008f76;
+    border-left: 1px solid#008f76;
 }
 
 .elementToFadeIn {
@@ -39,6 +39,6 @@ html {
 }
 
 ::selection {
-    background-color: white;
+    background-color: #008f76;
     color: black;
 }
