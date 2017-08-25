@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -11,24 +11,25 @@ export class SearchComponent implements OnInit {
     baseUrl: string = "http://api.tvmaze.com";
     showImage = false;
     myShow: any;
-    show: string = '';
     shows = [];
     myShows = [];
     statusColor: string;
     colors = [];
     seasons = [];
     currentId: number;
+    @Input() show;
 
-
-    getshows(junk: string) {
-        return this.http.get(this.baseUrl+'/search/shows?q='+junk).map(res => res.json());
+    getshows() {
+        return this.http.get(this.baseUrl+'/search/shows?q='+this.show).map(res => res.json());
     }
+
     getseasons(junk: number) {
         return this.http.get(this.baseUrl+'/shows/'+junk+'/seasons').map(res => res.json());
     }
 
-    search(junk: string){
-        this.getshows(junk).subscribe((posts) => {
+
+    search(junk:string){
+        this.getshows().subscribe((posts) => {
             for(let i = 0; i < posts.length; i++){
                 if(posts[i].show.image == null)
                     posts[i].show.image = 'http://www.downloadclipart.net/large/1197-blue-rectangle-white-up-arrow-design.png';
@@ -56,9 +57,9 @@ export class SearchComponent implements OnInit {
     constructor(public http: Http) { }
 
     ngOnInit() {
-        document.getElementById('focusThis').focus();
         this.colors['Running'] = "#1db954";
         this.colors['Ended'] = "#f44336";
+        this.search(this.show);
     }
 
 

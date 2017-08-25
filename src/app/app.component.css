@@ -1,37 +1,16 @@
-.links {
-    text-align: left;
-    font-family: "Roboto-Medium";
-    text-transform: uppercase;
+.searchBar {
+    height: 180px;
+    width: 100%;
+    background-color: transparent;
+    color: #008f76;
+    font-family: "Roboto-Black";
+    font-size: 180px;
+    outline: none;
+    border: none;
+    border-bottom: 5px solid #008f76;
 }
-.sidebar-nav .navbar .navbar-collapse {
-    padding: 0px !important;
-    margin: 0px !important;
-    max-height: none;
-  }
-  .sidebar-nav .navbar ul {
-    float: none;
-    display: block;
-  }
-  .sidebar-nav .navbar li {
-    float: none;
-    display: block;
-  }
-.navbar {
-      height: 100vh;
-      color: white;
-      padding: 0px !important;
-      margin: 0px !important;
-      border-radius: 0px;
-      border: none;
-      background: #222;
-      
-}
-.navbar-collapse {
-    padding: 0px !important;
-    margin: 0px !important;
-    border-radius: 0px;
-}
-.activeLink{
-    background-color: #1d1d1d;
-    color:white !important;
+input::placeholder {
+    color: #008f76;
+    font-family: "Roboto-Black";
+    font-size: 180px;
 }

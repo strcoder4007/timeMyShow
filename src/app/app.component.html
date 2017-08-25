@@ -1,1 +1,11 @@
-<router-outlet></router-outlet>
+<div class="row gutter-0" style="min-height: 180px; width: 100%; background-color: #222">
+    <div class="container" style="height: 180px;">
+        <input type="text"  [(ngModel)]="show" placeholder="tms" class="searchBar" routerLink="/search" (keypress)=eventHandler($event)>
+    </div>
+</div>
+<div *ngIf="showSearch; else subBlock">
+    <app-search [show]="show"></app-search>
+</div>
+<ng-template #subBlock>
+    <app-subs></app-subs>
+</ng-template>

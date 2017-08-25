@@ -8,13 +8,21 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{        
-
+    show: string;
+    showSearch: boolean = false;
 
     constructor(public http: Http) {   
     }
 
     getposts() {
         return this.http.get('').map(res => res.json());
+    }
+
+    eventHandler(ev) {
+        if(ev.keyCode == 13) {
+            this.showSearch = true;
+            alert("emitted!");
+        }
     }
 
     ngOnInit() {

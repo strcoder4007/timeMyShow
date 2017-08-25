@@ -1,11 +1,16 @@
-.brand {
-    color: whitesmoke;
-    font-family: "Roboto-Black";
-    font-size: 220px;
-}
 .searchBar {
-    height: 50px;
+    height: 180px;
     width: 100%;
-    font-family: "Roboto-Thin";
-    font-size: 30px;
+    background-color: transparent;
+    color: #008f76;
+    font-family: "Roboto-Black";
+    font-size: 180px;
+    outline: none;
+    border: none;
+    border-bottom: 5px solid #008f76;
+}
+input::placeholder {
+    color: #008f76;
+    font-family: "Roboto-Black";
+    font-size: 180px;
 }

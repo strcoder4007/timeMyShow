@@ -1,13 +1,5 @@
 <div class="row gutter-0 myLayout">
-<div class="row gutter-0" style="height: 50px">
-    <div class="col-xs-11">
-        <input id="focusThis" type="text" [(ngModel)]="show" class="searchInput" placeholder="search for shows...">
-    </div>
-    <div class="col-xs-1">
-        <button class="btn myBtn" (click)="search(show); showImage = true">search</button>
-    </div>
-</div>
-<div class="row gutter-0" style="height:calc(100vh - 50px); width: 100%; overflow: auto">
+    <div class="container" style="padding: 5px;">
     <div (click)="currentId=show.show.id; showMore = !showMore;" *ngFor="let show of shows; let i = index;" class="row tile">
         <div class="col-md-1 col-sm-4">
             <img src="{{show.show.image.medium || show.show.image}}" height="100px" width="75px">
@@ -33,5 +25,5 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
 </div>

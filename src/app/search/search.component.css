@@ -53,11 +53,12 @@
     border-color: white;
 }
 .myLayout {
-    background-color: #1d1d1d;
-    background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+    background-color: #222;
     border: none;
-    height: 100vh; 
+    min-height: calc(100vh - 200px); 
+    max-height: none;
     width: 100%;
+    padding-top: 20px;
 }
 .status {
     height: 90px;
