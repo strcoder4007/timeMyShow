@@ -39,6 +39,7 @@ export class SearchComponent implements OnInit {
                 let id = this.shows[i].show.id;
                 this.searchSeasons(id);
             }
+            console.log(this.seasons);
         })
     }
 

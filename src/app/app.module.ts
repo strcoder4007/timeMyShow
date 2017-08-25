@@ -6,13 +6,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SubsComponent } from './subs/subs.component';
-import { EpisodeComponent } from './episode/episode.component';
 import { SearchComponent } from './search/search.component';
-import { AboutComponent } from './about/about.component';
 
 const appRoutes: Routes = [
     { path: 'subs', component: SubsComponent },
-    { path: 'about', component: AboutComponent },
     { path: 'search', component: SearchComponent },  
     { path: '',
         redirectTo: '/subs',
@@ -24,9 +21,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     SubsComponent,
-    EpisodeComponent,
-    SearchComponent,
-    AboutComponent
+    SearchComponent
   ],
   imports: [
     FormsModule,

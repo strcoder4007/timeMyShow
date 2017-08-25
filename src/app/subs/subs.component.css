@@ -1,0 +1,11 @@
+.brand {
+    color: whitesmoke;
+    font-family: "Roboto-Black";
+    font-size: 220px;
+}
+.searchBar {
+    height: 50px;
+    width: 100%;
+    font-family: "Roboto-Thin";
+    font-size: 30px;
+}
