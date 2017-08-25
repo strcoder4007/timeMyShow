@@ -15,18 +15,16 @@
     border: 2px solid #008f76;
     background-color: 
     transparent;
-    text-transform: 
-    uppercase;
     color:#008f76;
     vertical-align: center;
     outline: none;
     height: 40px;
-    width: 130px;
+    width: 120px;
     margin-top: 7.2px;
 }
 .subsBtn:hover {
     color: whitesmoke;
-    border-color: white;
+    background-color: #008f76;
 }
 .myLayout {
     background-color: #222;
@@ -42,17 +40,17 @@
 }
 .badge {
     background-color: transparent;
-    border: 1px solid lightgray;
+    border: 1px solid #008f76;
     font-family: "Roboto";
-    font-size: 18px;
-    color: whitesmoke;
+    font-size: 15px;
+    color: #008f76;
 }
 .myImg {
     position: absolute;
     left: 0;
 }
 .name {
-    font-family: "Roboto";
+    font-family: "Roboto-Black";
     font-size: 20px;
-    color: whitesmoke;
+    color: lightgray;
 }
