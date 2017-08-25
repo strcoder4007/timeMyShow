@@ -14,3 +14,9 @@ input::placeholder {
     font-family: "Roboto-Black";
     font-size: 180px;
 }
+
+.name {
+    font-family: "Roboto";
+    font-size: 20px;
+    color: #008f76;
+}

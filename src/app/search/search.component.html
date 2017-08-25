@@ -1,10 +1,10 @@
 <div class="row gutter-0 myLayout">
     <div class="container">
         <div (click)="currentId=show.show.id; showMore = !showMore;" *ngFor="let show of shows; let i = index;" class="tile">
-        <div class="col-md-1 col-xs-2">
+        <div class="col-md-1 col-sm-2 col-xs-2">
             <img src="{{show.show.image.medium || show.show.image}}" height="150px" width="100px" class="myImg">
         </div>
-        <div class="col-md-9 col-xs-6">
+        <div class="col-md-9 col-sm-8 col-xs-6">
             <span class="name"><b>{{show.show.name}}</b>&nbsp;({{show.show.premiered.split('-')[0]}})</span>
             <span class="badge"><i class="fa fa-star"></i>&nbsp;{{show.show.rating.average || '?'}}</span><br>
             <span style="font-size: 16px">Runtime: </span>
@@ -17,7 +17,7 @@
             <span style="font-size: 16px">Seasons: </span>
             <span style="font-size: 16px">{{seasons[i].length || 0}}&nbsp;(~{{seasons[i][seasons[i].length-1 || 0].episodeOrder || 0}} episodes/season)</span>
         </div>
-        <div class="col-md-2 col-xs-3">
+        <div class="col-md-2 col-sm-2 col-xs-3">
             <button (click)="subscribe(show.show.id)" class="btn subsBtn pull-right">subscribe</button><br>
             <button routerLink="/episode" class="btn subsBtn pull-right">all episodes</button><br>
             <button routerLink="/episode" class="btn subsBtn pull-right">more</button>

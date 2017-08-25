@@ -1,16 +1,5 @@
-.searchBar {
-    height: 180px;
-    width: 100%;
-    background-color: transparent;
+.name {
+    font-family: "Roboto";
+    font-size: 20px;
     color: #008f76;
-    font-family: "Roboto-Black";
-    font-size: 180px;
-    outline: none;
-    border: none;
-    border-bottom: 5px solid #008f76;
-}
-input::placeholder {
-    color: #008f76;
-    font-family: "Roboto-Black";
-    font-size: 180px;
 }
