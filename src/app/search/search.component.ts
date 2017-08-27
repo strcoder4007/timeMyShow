@@ -16,7 +16,7 @@ export class SearchComponent implements OnInit {
     seasons = [];
     currentId: number;
     @Input() show;
-    @Input() myShows;
+    myShows: string;
 
     getshows() {
         return this.http.get(this.baseUrl+'/search/shows?q='+this.show).map(res => res.json());
@@ -44,9 +44,13 @@ export class SearchComponent implements OnInit {
     }
 
     subscribe(id: number) {
-        this.myShows.push(id);
-        this.myShows.push(2);
+        if(this.myShows.length == 0)
+            this.myShows += id;
+        else
+            this.myShows += ','+id;
+        alert(this.myShows);
         localStorage.setItem('myShows', this.myShows);
+        alert(this.myShows);
     }
 
     searchSeasons(id: number) {
@@ -61,6 +65,7 @@ export class SearchComponent implements OnInit {
         this.colors['Running'] = "#1db954";
         this.colors['Ended'] = "#f44336";
         this.search(this.show);
+        this.myShows = localStorage.getItem("myShows");
     }
 
 

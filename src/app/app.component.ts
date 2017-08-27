@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 export class AppComponent implements OnInit{        
     show: string;
     showSearch: boolean = false;
-    myShows: Array<number>;
+    myShows: string = "";
 
     constructor(public http: Http) {   
     }
@@ -26,6 +26,8 @@ export class AppComponent implements OnInit{
     }
 
     ngOnInit() {
+        if(localStorage.myShows != undefined)
+            this.myShows = localStorage.getItem("myShows");
         this.getposts().subscribe((posts) => {
         })
     }        

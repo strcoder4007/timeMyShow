@@ -19,12 +19,14 @@ export class SubsComponent implements OnInit {
 
     ngOnInit() {
         this.myIds = localStorage.getItem('myShows').split(',');
-        for(let i = 0; i < this.myIds.length; i++) {
-            this.getposts(this.myIds[i]).subscribe((posts) => {
-                this.myShows.push(posts);
-            })
+        if(this.myIds.length) {
+            for(let i = 0; i < this.myIds.length; i++) {
+                this.getposts(this.myIds[i]).subscribe((posts) => {
+                    this.myShows.push(posts);
+                })
+            }
+            console.log(this.myShows);
         }
-        console.log(this.myShows);
     }
 
 }

@@ -1,5 +1,56 @@
-.name {
+.tile{
+    min-height: 150px;
+    width: 100%; 
+    background-color: #222;
     font-family: "Roboto";
-    font-size: 20px;
+    font-size:16px;
+    color: lightgray;
+    margin-top: 15px;
+    border-right: 10px solid #1db954;
+}
+.subsBtn {
+    font-family: "Roboto-Regular";
+    font-size: 15px;
+    border-radius: 2px;
+    border: 2px solid #008f76;
+    background-color: 
+    transparent;
+    color:#008f76;
+    vertical-align: center;
+    outline: none;
+    height: 40px;
+    width: 120px;
+    margin-top: 7.2px;
+}
+.subsBtn:hover {
+    color: whitesmoke;
+    background-color: #008f76;
+}
+.myLayout {
+    background-color: #222;
+    border: none;
+    min-height: calc(100vh - 180px); 
+    max-height: none;
+    width: 100%;
+    padding-top: 20px;
+}
+.status {
+    height: 150px;
+    width: 10px;
+}
+.badge {
+    background-color: transparent;
+    border: 1px solid #008f76;
+    font-family: "Roboto";
+    font-size: 15px;
     color: #008f76;
+}
+.myImg {
+    position: absolute;
+    left: 0;
+}
+.name {
+    font-family: "Roboto-Black";
+    font-size: 20px;
+    color: lightgray;
 }

@@ -1,12 +1,32 @@
 <div class="row gutter-0" style="min-height: calc( 100vh - 180px); background-color: #222">
-    <div *ngIf="myIds.length == 0; else showsBlock" class="container" style="margin-top: 30px;">
+    <div *ngIf="1 == 0; else showsBlock" class="container" style="margin-top: 30px;">
         <span class="name">subscribe to shows to see their schedule</span>
     </div>
     <ng-template #showsBlock>
-        <div class="container">
-            <div *ngFor="let show of myShows; let i = index" class="tile">
-                {{show.name}}
+            <div class="container">
+                <div *ngFor="let show of myShows; let i = index" class="tile">
+                        <div class="col-md-1 col-sm-2 col-xs-2">
+                                <img src="{{show.image.medium || show.image}}" height="150px" width="100px" class="myImg">
+                            </div>
+                            <div class="col-md-9 col-sm-8 col-xs-6">
+                                <span class="name"><b>{{show.name}}</b>&nbsp;({{show.premiered.split('-')[0]}})</span>
+                                <span class="badge"><i class="fa fa-star"></i>&nbsp;{{show.rating.average || '?'}}</span><br>
+                                <span style="font-size: 16px">Runtime: </span>
+                                <span style="font-size: 16px" *ngIf="show.runtime <= 5">{{show.runtime}} hours</span>
+                                <span style="font-size: 16px" *ngIf="show.runtime > 5">{{show.runtime}} minutes</span>
+                                <br>
+                                <span style="font-size: 16px">Genre: </span>
+                                <span style="font-size: 16px" *ngFor="let genre of show.genres">{{genre}}&nbsp;</span>
+                                <br>
+                                <span style="font-size: 16px">Seasons: </span>
+                                <span style="font-size: 16px">{{seasons[i].length || 0}}&nbsp;(~{{seasons[i][seasons[i].length-1 || 0].episodeOrder || 0}} episodes/season)</span>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-3">
+                                <button (click)="subscribe(show.id)" class="btn subsBtn pull-right">subscribe</button><br>
+                                <button routerLink="/episode" class="btn subsBtn pull-right">all episodes</button><br>
+                                <button routerLink="/episode" class="btn subsBtn pull-right">more</button>
+                            </div>
+                </div>
             </div>
-        </div>
-    </ng-template>
+        </ng-template>
 </div>
