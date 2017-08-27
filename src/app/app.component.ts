@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 export class AppComponent implements OnInit{        
     show: string;
     showSearch: boolean = false;
+    myShows: Array<number>;
 
     constructor(public http: Http) {   
     }

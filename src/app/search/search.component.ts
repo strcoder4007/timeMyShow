@@ -10,14 +10,13 @@ import 'rxjs/add/operator/map';
 export class SearchComponent implements OnInit {
     baseUrl: string = "http://api.tvmaze.com";
     showImage = false;
-    myShow: any;
     shows = [];
-    myShows = [];
     statusColor: string;
     colors = [];
     seasons = [];
     currentId: number;
     @Input() show;
+    @Input() myShows;
 
     getshows() {
         return this.http.get(this.baseUrl+'/search/shows?q='+this.show).map(res => res.json());
@@ -46,6 +45,8 @@ export class SearchComponent implements OnInit {
 
     subscribe(id: number) {
         this.myShows.push(id);
+        this.myShows.push(2);
+        localStorage.setItem('myShows', this.myShows);
     }
 
     searchSeasons(id: number) {
