@@ -44,13 +44,11 @@ export class SearchComponent implements OnInit {
     }
 
     subscribe(id: number) {
-        if(this.myShows.length == 0)
+        if(this.myShows == null)
             this.myShows += id;
         else
             this.myShows += ','+id;
-        alert(this.myShows);
         localStorage.setItem('myShows', this.myShows);
-        alert(this.myShows);
     }
 
     searchSeasons(id: number) {
