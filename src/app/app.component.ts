@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -14,7 +16,7 @@ export class AppComponent implements OnInit{
     subsList = [];
     myIds = [];
 
-    constructor(public http: Http) {   
+    constructor(public http: Http, public router: Router) {   
     }
 
     getposts() {
@@ -64,6 +66,7 @@ export class AppComponent implements OnInit{
 
     toggleSearch() {
         this.showSearch = false;
+        this.router.navigate(['/subs']);
     }
 
     ngOnInit() {
