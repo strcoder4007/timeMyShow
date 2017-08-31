@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -9,12 +9,13 @@ import 'rxjs/add/operator/map';
 })
 export class SubsComponent implements OnInit {
     myShows = [];
-    myIds: any;
     junk = [];
     allMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     verdict = [];
     showTip: boolean = true;
     showCount: number = 0;
+    @Input() subsList;
+    @Input() myIds;
 
     constructor(public http: Http) { }
 
@@ -28,7 +29,6 @@ export class SubsComponent implements OnInit {
     
     ngOnInit() {
         if(localStorage.myShows != undefined) {
-            this.myIds = localStorage.getItem('myShows').split(',');
             this.showCount = this.myIds.length;
             for(let i = 0; i < this.myIds.length; i++) {
                 this.getShows(this.myIds[i]).subscribe((posts) => {

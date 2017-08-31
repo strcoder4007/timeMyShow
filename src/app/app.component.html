@@ -4,8 +4,8 @@
     </div>
 </div>
 <div *ngIf="showSearch; else subBlock">
-    <app-search [show]="show"></app-search>
+    <app-search [subsList]="subsList" [myIds]="myIds" [show]="show"></app-search>
 </div>
 <ng-template #subBlock>
-    <app-subs></app-subs>
+    <app-subs [subsList]="subsList" [myIds]="myIds"></app-subs>
 </ng-template>  
