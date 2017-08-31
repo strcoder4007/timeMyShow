@@ -27,6 +27,12 @@ export class SearchComponent implements OnInit {
 
     constructor(public http: Http, public router: Router) { }
 
+    ngOnChanges() {
+        if(this.show == "")
+            this.goBack();
+        this.search(this.show);
+    }
+
 
     getshows() {
         return this.http.get(this.baseUrl+'/search/shows?q='+this.show).map(res => res.json());
