@@ -7,5 +7,5 @@
     <app-search [subsList]="subsList" [myIds]="myIds" [show]="show"></app-search>
 </div>
 <ng-template #subBlock>
-    <app-subs [subsList]="subsList" [myIds]="myIds"></app-subs>
+    <app-subs [subsList]="subsList" [myIds]="myIds" (emitUnsub)="unsubscribe($event)"></app-subs>
 </ng-template>  

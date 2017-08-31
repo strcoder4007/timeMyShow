@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -9,13 +9,12 @@ import 'rxjs/add/operator/map';
 })
 export class SubsComponent implements OnInit {
     myShows = [];
-    junk = [];
     allMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     verdict = [];
     showTip: boolean = true;
-    showCount: number = 0;
     @Input() subsList;
     @Input() myIds;
+    @Output() emitUnsub = new EventEmitter();
 
     constructor(public http: Http) { }
 
@@ -26,10 +25,15 @@ export class SubsComponent implements OnInit {
     getEpisodes(id: string) {
         return this.http.get('http://api.tvmaze.com/shows/'+id+'/episodes').map(res => res.json());
     }
+
+    unsubscribe(junk: string) {
+        let id = parseInt(junk);
+        console.log("deleting " + junk + " from " + this.myIds);
+        this.emitUnsub.emit(id);
+    }
     
     ngOnInit() {
         if(localStorage.myShows != undefined) {
-            this.showCount = this.myIds.length;
             for(let i = 0; i < this.myIds.length; i++) {
                 this.getShows(this.myIds[i]).subscribe((posts) => {
                     this.myShows.push(posts);

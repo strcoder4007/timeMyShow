@@ -16,7 +16,7 @@ export class SearchComponent implements OnInit {
     seasons = [];
     currentId: number;
     @Input() show;
-    myShows: string;
+    myShows: string = '';
     @Input() subsList;
     @Input() myIds;
     resultIds = [];
@@ -41,11 +41,12 @@ export class SearchComponent implements OnInit {
         })
     }
 
-    subscribe(id: number) {
-        if(this.myShows == null)
-            this.myShows += id;
-        else
+    subscribe(junk: number) {
+        let id = junk+'';
+        if(this.myShows)
             this.myShows += ','+id;
+        else
+            this.myShows = id;
         localStorage.setItem('myShows', this.myShows);
         this.subsList[id] = true;
     }
@@ -62,8 +63,5 @@ export class SearchComponent implements OnInit {
         this.colors['Running'] = "#1db954";
         this.colors['Ended'] = "#f44336";
         this.search(this.show);
-        this.myShows = localStorage.getItem("myShows");
     }
-
-
 }

@@ -27,6 +27,19 @@ export class AppComponent implements OnInit{
         }
     }
 
+    unsubscribe(ev) {
+        this.subsList[ev] = false;
+        var index = this.myIds.indexOf(ev);
+        this.myIds.splice(index, 1);
+        this.myShows = '';
+        for(let i = 0; i < this.myIds.length; i++)
+            if(this.myShows == '')
+                this.myShows += this.myIds[i];
+            else
+                this.myShows += ','+this.myIds[i];
+        localStorage.setItem('myShows', this.myShows);
+    }
+
     ngOnInit() {
         if(localStorage.myShows != undefined) {
             this.myShows = localStorage.getItem("myShows");
@@ -38,6 +51,7 @@ export class AppComponent implements OnInit{
             for(let i = 0; i < this.myIds.length; i++)
                 this.subsList[this.myIds[i]] = true;
         }
+        console.log(this.myIds);
         this.getposts().subscribe((posts) => {
         })
     }        
