@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -15,13 +16,17 @@ export class SearchComponent implements OnInit {
     colors = [];
     seasons = [];
     currentId: number;
+    resultIds = [];
     @Input() show;
     @Input() myShows;
     @Input() subsList;
     @Input() myIds;
-    resultIds = [];
+    @Output() emitSearchToggle = new EventEmitter();
     @Output() emitUnsubSearch = new EventEmitter();
     @Output() emitSubSearch = new EventEmitter();
+
+    constructor(public http: Http, public router: Router) { }
+
 
     getshows() {
         return this.http.get(this.baseUrl+'/search/shows?q='+this.show).map(res => res.json());
@@ -57,7 +62,9 @@ export class SearchComponent implements OnInit {
         this.emitUnsubSearch.emit(junk);
     }
 
-    constructor(public http: Http) { }
+    goBack() {
+        this.emitSearchToggle.emit();
+    }
 
     ngOnInit() {
         this.colors['Running'] = "#1db954";

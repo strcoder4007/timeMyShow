@@ -4,7 +4,7 @@
     </div>
 </div>
 <div *ngIf="showSearch; else subBlock">
-    <app-search [myShows]="myShows" [subsList]="subsList" [myIds]="myIds" [show]="show" (emitUnsubSearch)="unsubscribe($event)" (emitSubSearch)="subscribe($event)"></app-search>
+    <app-search (emitSearchToggle)="toggleSearch()" [myShows]="myShows" [subsList]="subsList" [myIds]="myIds" [show]="show" (emitUnsubSearch)="unsubscribe($event)" (emitSubSearch)="subscribe($event)"></app-search>
 </div>
 <ng-template #subBlock>
     <app-subs [myShows]="myShows" [subsList]="subsList" [myIds]="myIds" (emitUnsub)="unsubscribe($event)"></app-subs>

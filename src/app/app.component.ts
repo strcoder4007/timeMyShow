@@ -62,6 +62,10 @@ export class AppComponent implements OnInit{
         localStorage.setItem('myShows', this.myShows);
     }
 
+    toggleSearch() {
+        this.showSearch = false;
+    }
+
     ngOnInit() {
         for(let i = 0; i <= 100000; i++)
             this.subsList.push(false);
