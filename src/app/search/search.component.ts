@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -16,10 +16,12 @@ export class SearchComponent implements OnInit {
     seasons = [];
     currentId: number;
     @Input() show;
-    myShows: string = '';
+    @Input() myShows;
     @Input() subsList;
     @Input() myIds;
     resultIds = [];
+    @Output() emitUnsubSearch = new EventEmitter();
+    @Output() emitSubSearch = new EventEmitter();
 
     getshows() {
         return this.http.get(this.baseUrl+'/search/shows?q='+this.show).map(res => res.json());
@@ -29,7 +31,6 @@ export class SearchComponent implements OnInit {
         return this.http.get(this.baseUrl+'/shows/'+junk+'/seasons').map(res => res.json());
     }
 
-
     search(junk:string){
         this.getshows().subscribe((posts) => {
             for(let i = 0; i < posts.length; i++){
@@ -38,23 +39,22 @@ export class SearchComponent implements OnInit {
                     posts[i].show.image = 'http://www.downloadclipart.net/large/1197-blue-rectangle-white-up-arrow-design.png';
             }
             this.shows = posts;
+            console.log(posts);
         })
-    }
-
-    subscribe(junk: number) {
-        let id = junk+'';
-        if(this.myShows)
-            this.myShows += ','+id;
-        else
-            this.myShows = id;
-        localStorage.setItem('myShows', this.myShows);
-        this.subsList[id] = true;
     }
 
     searchSeasons(id: number) {
         this.getseasons(id).subscribe((posts) => {
             this.seasons.push(posts);
         })
+    }
+
+    subscribe(junk: number) {
+        this.emitSubSearch.emit(junk);
+    }
+
+    unsubscribe(junk: number) {
+        this.emitUnsubSearch.emit(junk);
     }
 
     constructor(public http: Http) { }

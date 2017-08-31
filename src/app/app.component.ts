@@ -27,31 +27,52 @@ export class AppComponent implements OnInit{
         }
     }
 
+    subscribe(ev) {
+        if(localStorage.myShows == undefined)
+            localStorage.setItem('myShows', '');
+        this.myShows = localStorage.getItem("myShows");
+        if(this.subsList[ev] == false) {
+            if(this.myShows == undefined || this.myShows == '')
+                this.myShows = String(ev);
+            else
+                this.myShows = this.myShows+','+String(ev);
+            this.subsList[ev] = true;
+            localStorage.setItem('myShows', this.myShows);
+            this.myIds = this.myShows.split(',');
+        }
+    }
+
     unsubscribe(ev) {
         this.subsList[ev] = false;
-        var index = this.myIds.indexOf(ev);
-        this.myIds.splice(index, 1);
+        var index = -1;
+        for(let i = 0; i < this.myIds.length; i++)
+            if(this.myIds[i] == ev)
+                index = i;
+        let junk = this.myIds;
+        this.myIds = [];
+        for(let i = 0; i < junk.length; i++)
+            if(i != index)
+                this.myIds.push(junk[i]);
         this.myShows = '';
         for(let i = 0; i < this.myIds.length; i++)
             if(this.myShows == '')
-                this.myShows += this.myIds[i];
+                this.myShows = this.myShows+this.myIds[i];
             else
-                this.myShows += ','+this.myIds[i];
+                this.myShows = this.myShows+','+this.myIds[i];
         localStorage.setItem('myShows', this.myShows);
     }
 
     ngOnInit() {
+        for(let i = 0; i <= 100000; i++)
+            this.subsList.push(false);
         if(localStorage.myShows != undefined) {
             this.myShows = localStorage.getItem("myShows");
-            for(let i = 0; i <= 100000; i++)
-                this.subsList.push(false);
             let junk = this.myShows.split(',');
             for(let i = 0; i < junk.length; i++)
                 this.myIds.push(parseInt(junk[i]));
             for(let i = 0; i < this.myIds.length; i++)
                 this.subsList[this.myIds[i]] = true;
         }
-        console.log(this.myIds);
         this.getposts().subscribe((posts) => {
         })
     }        

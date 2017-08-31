@@ -8,12 +8,13 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./subs.component.css']
 })
 export class SubsComponent implements OnInit {
-    myShows = [];
+    shows = [];
     allMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     verdict = [];
     showTip: boolean = true;
     @Input() subsList;
     @Input() myIds;
+    @Input() myShows;    
     @Output() emitUnsub = new EventEmitter();
 
     constructor(public http: Http) { }
@@ -26,18 +27,19 @@ export class SubsComponent implements OnInit {
         return this.http.get('http://api.tvmaze.com/shows/'+id+'/episodes').map(res => res.json());
     }
 
-    unsubscribe(junk: string) {
-        let id = parseInt(junk);
-        console.log("deleting " + junk + " from " + this.myIds);
-        this.emitUnsub.emit(id);
+    unsubscribe(junk) {
+        this.emitUnsub.emit(junk);
     }
     
     ngOnInit() {
-        if(localStorage.myShows != undefined) {
+        if(this.myIds != '') {
             for(let i = 0; i < this.myIds.length; i++) {
                 this.getShows(this.myIds[i]).subscribe((posts) => {
-                    this.myShows.push(posts);
+                    this.shows.push(posts);
                 });
+            }
+            console.log(this.shows);
+            for(let i = 0; i < this.myIds.length; i++) {
                 this.getEpisodes(this.myIds[i]).subscribe((posts) => {
                     //console.log(posts);
                     let today = new Date();
@@ -72,7 +74,6 @@ export class SubsComponent implements OnInit {
                     }
                 })
             }
-            //console.log(this.myShows);
         }
     }
 
