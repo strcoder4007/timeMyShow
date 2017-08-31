@@ -14,11 +14,18 @@
             <span style="font-size: 16px">Genre: </span>
             <span style="font-size: 16px" *ngFor="let genre of show.show.genres">{{genre}}&nbsp;</span>
             <br>
-            <span style="font-size: 16px">Seasons: </span>
-            <!-- <span style="font-size: 16px">{{seasons[i].length || 0}}&nbsp;(~{{seasons[i][seasons[i].length-1 || 0].episodeOrder || 0}} episodes/season)</span> -->
+            <!-- <span style="font-size: 16px">Seasons: </span>
+            <span style="font-size: 16px">{{seasons[i].length || 0}}&nbsp;(~{{seasons[i][seasons[i].length-1 || 0].episodeOrder || 0}} episodes/season)</span> -->
         </div>
         <div class="col-md-2 col-sm-2 col-xs-3">
-            <button (click)="subscribe(show.show.id)" class="btn subsBtn pull-right">subscribe</button><br>
+            <div *ngIf="subsList[myIds[i+1]]; then unsubBlock; else subBlock"></div>
+            <ng-template #unsubBlock>
+                <button (click)="unsubscribe(show.show.id)" class="btn subsBtn pull-right">unsubscribe</button>
+            </ng-template>
+            <ng-template #subBlock>
+                <button (click)="subscribe(show.show.id)" class="btn subsBtn pull-right">subscribe</button>
+            </ng-template>
+            <br>
             <button routerLink="/episode" class="btn subsBtn pull-right">all episodes</button><br>
             <button routerLink="/episode" class="btn subsBtn pull-right">more</button>
         </div>

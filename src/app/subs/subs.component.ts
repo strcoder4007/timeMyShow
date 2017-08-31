@@ -35,14 +35,14 @@ export class SubsComponent implements OnInit {
                     this.myShows.push(posts);
                 });
                 this.getEpisodes(this.myIds[i]).subscribe((posts) => {
-                    this.junk.push(posts);
+                    //console.log(posts);
                     let today = new Date();
                     let month = "";
-                    month += today.getMonth();
+                    month += today.getMonth()+1;
                     if(month.length == 1)
                         month = '0'+month;
                     let day = "";
-                    day += today.getDay();
+                    day += today.getDate();
                     if(day.length == 1)
                         day = '0'+day;
                     let myDay = today.getFullYear()+'-'+month+'-'+day;
@@ -52,7 +52,7 @@ export class SubsComponent implements OnInit {
                         this.verdict.push("Show ended on " + airdate[2] + " " + this.allMonths[parseInt(airdate[1])-1] + " " + airdate[0]);
                     }
                     else if(myDay < airdate) {
-                        let season = 0, episode = 0;
+                        let season, episode;
                         for(let j = posts.length-1; j+1; j--) {
                             if(myDay > posts[j].airdate)
                                 break;
@@ -60,14 +60,15 @@ export class SubsComponent implements OnInit {
                                 airdate = posts[j].airdate, season = posts[j].season, episode = posts[j].number;
                         }
                         airdate = airdate.split('-');
-                        this.verdict.push("Season "+season+" Episode "+episode+" to be released on " + airdate[2] +" " + this.allMonths[parseInt(airdate[1])-1] + " " + airdate[0]);
+                        this.verdict.push("Next episode (Season "+season+" Episode "+episode+"): " + airdate[2] +" " + this.allMonths[parseInt(airdate[1])-1] + " " + airdate[0]);
                     }
-                    else
+                    else {
+                        alert("say wha-what");
                         this.verdict.push("Episode releasing today");
+                    }
                 })
             }
-            console.log(this.junk);
-            console.log(this.myShows);
+            //console.log(this.myShows);
         }
     }
 

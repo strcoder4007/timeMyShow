@@ -17,6 +17,8 @@ export class SearchComponent implements OnInit {
     currentId: number;
     @Input() show;
     myShows: string;
+    subsList = [false];
+    myIds = ['0'];
 
     getshows() {
         return this.http.get(this.baseUrl+'/search/shows?q='+this.show).map(res => res.json());
@@ -34,12 +36,6 @@ export class SearchComponent implements OnInit {
                     posts[i].show.image = 'http://www.downloadclipart.net/large/1197-blue-rectangle-white-up-arrow-design.png';
             }
             this.shows = posts;
-            console.log(this.shows);
-            for(let i  = 0; i < this.shows.length; i++){
-                let id = this.shows[i].show.id;
-                this.searchSeasons(id);
-            }
-            console.log(this.seasons);
         })
     }
 
@@ -49,6 +45,7 @@ export class SearchComponent implements OnInit {
         else
             this.myShows += ','+id;
         localStorage.setItem('myShows', this.myShows);
+        this.subsList[id] = true;
     }
 
     searchSeasons(id: number) {
@@ -64,6 +61,14 @@ export class SearchComponent implements OnInit {
         this.colors['Ended'] = "#f44336";
         this.search(this.show);
         this.myShows = localStorage.getItem("myShows");
+        for(let i = 0; i <= 100000; i++)
+            this.subsList.push(false);
+        let junk = this.myShows.split(',');
+        for(let i = 0; i < junk.length; i++)
+            this.myIds.push(junk[i]);
+        for(let i = 1; i < this.myIds.length; i++) {
+            this.subsList[i] = true;
+        }
     }
 
 
