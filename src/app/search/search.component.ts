@@ -45,12 +45,18 @@ export class SearchComponent implements OnInit {
     search(junk:string){
         this.getshows().subscribe((posts) => {
             for(let i = 0; i < posts.length; i++){
+                if(posts[i].show.premiered == null)
+                    posts[i].show.premiered = "unknown";
+                if(posts[i].show.genres.length == 0)
+                    posts[i].show.genres.push("unknown");
+                if(posts[i].show.summary != null)
+                    if(posts[i].show.summary.length > 340)
+                        posts[i].show.summary = posts[i].show.summary.slice(0, 340)+".....";
                 this.resultIds.push(parseInt(posts[i].show.id));
                 if(posts[i].show.image == null)
-                    posts[i].show.image = 'http://www.downloadclipart.net/large/1197-blue-rectangle-white-up-arrow-design.png';
+                    posts[i].show.image = 'assets/replacement.png';
             }
             this.shows = posts;
-            console.log(posts);
         })
     }
 

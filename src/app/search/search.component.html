@@ -2,23 +2,24 @@
     <div class="container">
         <a (click)="goBack()" class="backBtn"><i class="fa fa-long-arrow-left"></i></a>
         <div (click)="currentId=show.show.id; showMore = !showMore;" *ngFor="let show of shows; let i = index;" class="tile">
-        <div class="col-md-1 col-sm-2 col-xs-2">
+        <div class="col-md-1 col-sm-2 col-xs-2" style="min-height: 150px">
             <img src="{{show.show.image.medium || show.show.image}}" height="150px" width="100px" class="myImg">
         </div>
-        <div class="col-md-9 col-sm-8 col-xs-6">
+        <div class="col-md-9 col-sm-8 col-xs-6" style="min-height: 150px">
             <span class="name"><b>{{show.show.name}}</b>&nbsp;({{show.show.premiered.split('-')[0]}})</span>
             <span class="badge"><i class="fa fa-star"></i>&nbsp;{{show.show.rating.average || '?'}}</span><br>
-            <span style="font-size: 16px">Runtime: </span>
+            <span style="font-size: 16px"><b>Runtime: </b></span>
             <span style="font-size: 16px" *ngIf="show.show.runtime <= 5">{{show.show.runtime}} hours</span>
             <span style="font-size: 16px" *ngIf="show.show.runtime > 5">{{show.show.runtime}} minutes</span>
             <br>
-            <span style="font-size: 16px">Genre: </span>
+            <span style="font-size: 16px"><b>Genre: </b></span>
             <span style="font-size: 16px" *ngFor="let genre of show.show.genres">{{genre}}&nbsp;</span>
             <br>
             <!-- <span style="font-size: 16px">Seasons: </span>
             <span style="font-size: 16px">{{seasons[i].length || 0}}&nbsp;(~{{seasons[i][seasons[i].length-1 || 0].episodeOrder || 0}} episodes/season)</span> -->
+            <span style="font-size: 16px" [innerHTML]="show.show.summary"></span><br>
         </div>
-        <div class="col-md-2 col-sm-2 col-xs-3">
+        <div class="col-md-2 col-sm-2 col-xs-3" style="min-height: 150px">
             <div *ngIf="subsList[resultIds[i]]; then unsubBlock; else subBlock"></div>
             <ng-template #unsubBlock>
                 <button (click)="unsubscribe(show.show.id)" class="btn subsBtn pull-right">unsubscribe</button>
@@ -27,9 +28,9 @@
                 <button (click)="subscribe(show.show.id)" class="btn subsBtn pull-right">subscribe</button>
             </ng-template>
             <br>
-            <button routerLink="/episode" class="btn subsBtn pull-right">all episodes</button><br>
-            <button routerLink="/episode" class="btn subsBtn pull-right">more</button>
+            <button routerLink="/episode" class="btn subsBtn pull-right">all episodes</button>
         </div>
+        <div class="clearfix"></div>
     </div>
     </div>
 </div>

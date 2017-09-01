@@ -32,16 +32,20 @@ export class SubsComponent implements OnInit {
     }
     
     ngOnInit() {
+        for(let i = 0; i < 10000; i++)
+            this.verdict.push('');
         if(this.myIds != '') {
             for(let i = 0; i < this.myIds.length; i++) {
                 this.getShows(this.myIds[i]).subscribe((posts) => {
+                    if(posts.summary.length > 340)
+                        posts.summary = posts.summary.slice(0, 340)+".....";
+                    if(posts.image == null)
+                        posts.image = 'http://www.downloadclipart.net/large/1197-blue-rectangle-white-up-arrow-design.png';
                     this.shows.push(posts);
                 });
             }
-            console.log(this.shows);
             for(let i = 0; i < this.myIds.length; i++) {
                 this.getEpisodes(this.myIds[i]).subscribe((posts) => {
-                    //console.log(posts);
                     let today = new Date();
                     let month = "";
                     month += today.getMonth()+1;
@@ -55,7 +59,7 @@ export class SubsComponent implements OnInit {
                     let airdate = posts[posts.length-1].airdate;
                     if(myDay > airdate) {
                         airdate = airdate.split('-');
-                        this.verdict.push("Show ended on " + airdate[2] + " " + this.allMonths[parseInt(airdate[1])-1] + " " + airdate[0]);
+                        this.verdict[this.myIds[i]] = "Show ended on " + airdate[2] + " " + this.allMonths[parseInt(airdate[1])-1] + " " + airdate[0];
                     }
                     else if(myDay < airdate) {
                         let season, episode;
@@ -66,7 +70,7 @@ export class SubsComponent implements OnInit {
                                 airdate = posts[j].airdate, season = posts[j].season, episode = posts[j].number;
                         }
                         airdate = airdate.split('-');
-                        this.verdict.push("Next episode (Season "+season+" Episode "+episode+"): " + airdate[2] +" " + this.allMonths[parseInt(airdate[1])-1] + " " + airdate[0]);
+                        this.verdict[this.myIds[i]] = "Next episode (Season "+season+" Episode "+episode+"): " + airdate[2] +" " + this.allMonths[parseInt(airdate[1])-1] + " " + airdate[0];
                     }
                     else {
                         alert("say wha-what");

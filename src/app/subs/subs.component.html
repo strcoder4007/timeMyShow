@@ -12,14 +12,15 @@
                             <div class="col-md-9 col-sm-8 col-xs-6">
                                 <span class="name"><b>{{show.name}}</b>&nbsp;({{show.premiered.split('-')[0]}})</span>
                                 <span class="badge"><i class="fa fa-star"></i>&nbsp;{{show.rating.average || '?'}}</span><br>
-                                <span style="font-size: 16px">{{verdict[i]}}</span>
+                                <span style="font-size: 16px">{{verdict[show.id]}}</span><br>
+                                <p style="font-size: 16px" [innerHTML]="show.summary"></p>
                             </div>
                             <div class="col-md-2 col-sm-2 col-xs-3">
                                 <button (click)="unsubscribe(show.id)" class="btn subsBtn pull-right">unsubscribe</button><br>
-                                <button routerLink="/episode" class="btn subsBtn pull-right">all episodes</button><br>
-                                <button routerLink="/episode" class="btn subsBtn pull-right">more</button>
+                                <button routerLink="/episode" class="btn subsBtn pull-right">all episodes</button>
                             </div>
                     </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
         </ng-template>
