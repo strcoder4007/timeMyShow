@@ -28,7 +28,7 @@
 .myLayout {
     background-color: #222;
     border: none;
-    min-height: calc(100vh - 180px); 
+    min-height: calc(100vh 200px); 
     max-height: none;
     width: 100%;
     padding-top: 20px;

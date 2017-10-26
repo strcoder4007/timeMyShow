@@ -1,5 +1,5 @@
-<div class="row gutter-0" style="min-height: 180px; width: 100%; background-color: #222">
-    <div class="container" style="height: 180px;">
+<div class="row gutter-0" class = "row1">
+    <div class="container container1">
         <input type="text"  [(ngModel)]="show" placeholder="timemyshow" class="searchBar" routerLink="/search" (keypress)=eventHandler($event)>
     </div>
 </div>
@@ -9,3 +9,5 @@
 <ng-template #subBlock>
     <app-subs [myShows]="myShows" [subsList]="subsList" [myIds]="myIds" (emitUnsub)="unsubscribe($event)"></app-subs>
 </ng-template>  
+
+<div class="row gutter-0" style="height: 80px; width: 100%; background-color: #222"></div>

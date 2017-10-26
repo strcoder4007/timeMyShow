@@ -1,22 +1,62 @@
 .searchBar {
-    height: 180px;
+    height: 13vh;
     width: 100%;
     background-color: transparent;
     color: #008f76;
     font-family: "Roboto-Black";
-    font-size: 180px;
+    font-size: 8em;
     outline: none;
     border: none;
-    border-bottom: 5px solid #008f76;
+    border-bottom: 3px solid #008f76;
 }
 input::placeholder {
     color: #008f76;
     font-family: "Roboto-Black";
-    font-size: 180px;
+    font-size: 1em;
 }
+.row1 {
+    background-color: #222;
+    width: 100%;
+    height: 12vh;
+}
+.container1 {
+    height: 12vh;
+}
+
+.footer {
+    color: #008f76;
+    font-family: "Roboto";
+    font-size: 17px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #008f76;
+    font-family: "Roboto-Black";
+    font-size: 195px;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: #008f76;
+    font-family: "Roboto-Black";
+    font-size: 195px;
+    opacity: 1;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: #008f76;
+    font-family: "Roboto-Black";
+    font-size: 195px;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: #008f76;
+    font-family: "Roboto-Black";
+    font-size: 195px;
+  }
 
 .name {
     font-family: "Roboto";
     font-size: 20px;
     color: #008f76;
+}
+
+@media(max-width: 720px) {
+
 }
