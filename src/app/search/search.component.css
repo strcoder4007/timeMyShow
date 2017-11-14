@@ -58,6 +58,33 @@
     color: lightgray;
 }
 
-@media(max-width: 540px) {
+.imgClass {
+    min-height: 150px;
+}
 
+
+@media(max-width:1366px) {
+    .imgClass {
+        min-height: 150px;
+    }
+}
+
+
+@media(max-width:1280px) {
+    .imgClass {
+        min-height: 150px;
+    }
+}
+
+
+@media(max-width: 720px) {
+    .imgClass {
+        min-height: 150px;
+    }
+}
+
+@media(max-width: 480px) {
+    .imgClass {
+        min-height: 150px;
+    }
 }
