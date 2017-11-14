@@ -1,10 +1,10 @@
 .searchBar {
-    height: 13vh;
+    height: 20vh;
     width: 100%;
     background-color: transparent;
     color: #008f76;
     font-family: "Roboto-Black";
-    font-size: 8em;
+    font-size: 10em;
     outline: none;
     border: none;
     border-bottom: 3px solid #008f76;
@@ -12,15 +12,15 @@
 input::placeholder {
     color: #008f76;
     font-family: "Roboto-Black";
-    font-size: 1em;
+    font-size: 195px;
 }
 .row1 {
     background-color: #222;
     width: 100%;
-    height: 12vh;
+    height: 20vh;
 }
 .container1 {
-    height: 12vh;
+    height: 20vh;
 }
 
 .footer {
@@ -57,6 +57,8 @@ input::placeholder {
     color: #008f76;
 }
 
-@media(max-width: 720px) {
-
+@media(max-width: 480px) {
+    input::placeholder {
+        font-size: 80px;
+    }
 }
