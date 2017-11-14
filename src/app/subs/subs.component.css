@@ -55,7 +55,10 @@
 }
 
 @media(max-width: 540px) {
-    .name, .badge, .verdict, .summary {
+    .badge, .verdict, .summary {
+        font-size: 13px;
+    }
+    .name {
         font-size: 15px;
     }
 }

@@ -58,33 +58,23 @@
     color: lightgray;
 }
 
+.verdict {
+    font-size: 16px;
+}
+
 .imgClass {
     min-height: 150px;
 }
 
-
-@media(max-width:1366px) {
-    .imgClass {
-        min-height: 150px;
-    }
+.backBtn:hover {
+    cursor: pointer;
 }
 
-
-@media(max-width:1280px) {
-    .imgClass {
-        min-height: 150px;
+@media(max-width: 540px) {
+    .badge, .verdict, .summary {
+        font-size: 13px;
     }
-}
-
-
-@media(max-width: 720px) {
-    .imgClass {
-        min-height: 150px;
-    }
-}
-
-@media(max-width: 480px) {
-    .imgClass {
-        min-height: 150px;
+    .name {
+        font-size: 15px;
     }
 }
