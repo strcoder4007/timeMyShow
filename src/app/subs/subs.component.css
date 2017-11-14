@@ -53,3 +53,9 @@
     font-size: 20px;
     color: lightgray;
 }
+
+@media(max-width: 540px) {
+    .name, .badge, .verdict, .summary {
+        font-size: 15px;
+    }
+}

@@ -7,14 +7,14 @@
                 <div *ngFor="let show of shows; let i = index">
                     <div *ngIf="subsList[show.id]" class="tile">
                             <div class="col-md-9 col-sm-8 col-xs-12">
-                                    <div class="col-md-2 col-sm-2 col-xs-2">
+                                    <div class="col-md-2 col-sm-3 col-xs-4">
                                         <img src="{{show.image.medium || show.image}}" height="150px" width="100px" class="myImg">
                                     </div>
-                                    <div class="col-md-10 col-sm-10 col-xs-10">
+                                    <div class="col-md-10 col-sm-9 col-xs-8">
                                             <span class="name"><b>{{show.name}}</b>&nbsp;({{show.premiered.split('-')[0]}})</span>
                                             <span class="badge"><i class="fa fa-star"></i>&nbsp;{{show.rating.average || '?'}}</span><br>
-                                            <span style="font-size: 16px">{{verdict[show.id]}}</span><br>
-                                            <p style="font-size: 16px" [innerHTML]="show.summary"></p>
+                                            <span class="verdict">{{verdict[show.id]}}</span><br>
+                                            <p class="summary" [innerHTML]="show.summary"></p>
                                     </div>
                             </div>
                             <div class="col-md-2 col-sm-2 col-xs-6">
