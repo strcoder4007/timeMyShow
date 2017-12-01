@@ -5,6 +5,10 @@
 
 html {
     overflow-x:hidden;
+    background-color: #222;
+}
+body {
+    background-color: #222;
 }
 
 ::-webkit-scrollbar-track {

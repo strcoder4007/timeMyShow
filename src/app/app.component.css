@@ -56,3 +56,9 @@ input::placeholder {
     font-size: 20px;
     color: #008f76;
 }
+
+@media(max-width: 540px) {
+    .row1 {
+        margin-top: 10px;
+    }
+}
