@@ -67,7 +67,7 @@ export class AppComponent implements OnInit{
     toggleSearch() {
         this.showSearch = false;
         this.router.navigate(['/subs']);
-        this.show = "timemyshow";
+        this.show = "";
     }
 
     ngOnInit() {

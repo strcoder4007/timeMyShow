@@ -44,7 +44,7 @@ export class SearchComponent implements OnInit {
 
     search(junk:string){
         this.getshows().subscribe((posts) => {
-            console.log(posts);
+            //console.log(posts);
             for(let i = 0; i < posts.length; i++){
                 if(posts[i].show.premiered == null)
                     posts[i].show.premiered = "unknown";
