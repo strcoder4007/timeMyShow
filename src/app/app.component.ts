@@ -15,7 +15,6 @@ export class AppComponent implements OnInit{
     myShows: string = "";
     subsList = [];
     myIds = [];
-    myPlaceholder: string = "timemyshow";
 
     constructor(public http: Http, public router: Router) {   
     }
@@ -68,7 +67,7 @@ export class AppComponent implements OnInit{
     toggleSearch() {
         this.showSearch = false;
         this.router.navigate(['/subs']);
-        this.myPlaceholder = "timemyshow";
+        this.show = "timemyshow";
     }
 
     ngOnInit() {

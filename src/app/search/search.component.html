@@ -1,6 +1,5 @@
 <div class="row gutter-0 myLayout">
   <div class="container">
-    <!-- <a (click)="goBack()" class="backBtn"><i class="fa fa-long-arrow-left"></i></a> -->
     <button (click)="goBack()" class="btn backBtn">Go back</button>
     <div (click)="currentId=show.show.id; showMore = !showMore;" *ngFor="let show of shows; let i = index;" class="row gutter-0 tile">
       <div class="col-md-10 col-sm-8 col-xs-12">
