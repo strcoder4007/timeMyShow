@@ -21,7 +21,7 @@
             <button (click)="unsubscribe(show.id)" class="btn subsBtn">unsubscribe</button>
           </div>
           <div class="col-md-2 col-sm-2 col-xs-6">
-            <button routerLink="/episode" class="btn subsBtn episodeBtn">all episodes</button>
+            <a href="{{show.url}}+/episodes" target="_blank" class="btn subsBtn episodeBtn">all episodes</a>            
           </div>
         </div>
       </div>

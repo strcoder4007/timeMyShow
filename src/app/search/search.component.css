@@ -9,7 +9,7 @@
     font-family: "Roboto";
     font-size:16px;
     color: lightgray;
-    padding-bottom: 100px;
+    margin-top: 50px;
 }
 .subsBtn {
     font-family: "Roboto-Regular";
@@ -23,6 +23,7 @@
     outline: none;
     height: 40px;
     width: 120px;
+    margin-top: 20px;
 }
 .subsBtn:hover {
     color: whitesmoke;
@@ -78,7 +79,12 @@
     }
     .subsBtn {
         font-size: 12px;
-        height: 30px;
-        width: 90px;
+        height: 35px;
+        width: 100px;
+        margin-top: 0px;
+    }
+    .episodeBtn {
+        position: relative;
+        float: right;
     }
 }
