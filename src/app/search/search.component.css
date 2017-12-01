@@ -7,7 +7,7 @@
     vertical-align: center;
     outline: none;
     height: 40px;
-    width: 100%;
+    width: 120px;
     margin-bottom: 15px;
     border-radius: 2px;
 }
@@ -38,6 +38,7 @@
     outline: none;
     height: 40px;
     width: 120px;
+    margin-top: 20px;
 }
 .subsBtn:hover {
     color: whitesmoke;
@@ -82,10 +83,10 @@
 
 @media(max-width: 540px) {
     .badge, .verdict, .summary {
-        font-size: 13px;
+        font-size: 12px;
     }
     .name {
-        font-size: 15px;
+        font-size: 14px;
     }
     .subsBtn {
         font-size: 12px;

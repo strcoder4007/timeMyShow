@@ -3,10 +3,10 @@
     <span class="name">subscribe to shows to see their schedule</span>
   </div>
   <ng-template #showsBlock>
-    <div class="container">
+    <div class="container content">
       <div *ngFor="let show of shows; let i = index">
         <div *ngIf="subsList[show.id]" class="row gutter-0 tile">
-          <div class="col-md-10 col-sm-8 col-xs-12">
+          <div class="col-md-10 col-sm-8 col-xs-12" style="min-height: 170px">
             <div class="col-md-2 col-sm-3 col-xs-4">
               <img src="{{show.image.medium || show.image}}" height="150px" width="100px" class="myImg">
             </div>
@@ -21,7 +21,7 @@
             <button (click)="unsubscribe(show.id)" class="btn subsBtn">unsubscribe</button>
           </div>
           <div class="col-md-2 col-sm-2 col-xs-6">
-            <a href="{{show.url}}+/episodes" target="_blank" class="btn subsBtn episodeBtn">all episodes</a>            
+            <a href="{{show.url}}+/episodes" target="_blank" class="btn subsBtn episodeBtn">all episodes</a>
           </div>
         </div>
       </div>
