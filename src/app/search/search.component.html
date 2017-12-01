@@ -1,39 +1,39 @@
 <div class="row gutter-0 myLayout">
-    <div class="container">
-        <a (click)="goBack()" class="backBtn"><i class="fa fa-long-arrow-left"></i></a>
-        <div (click)="currentId=show.show.id; showMore = !showMore;" *ngFor="let show of shows; let i = index;" class="tile">
-        <div class="col-md-9 col-sm-8 col-xs-12">
-                <div class="col-md-2 col-sm-3 col-xs-4 imgClass">
-                        <img src="{{show.show.image.medium || show.show.image}}" height="150px" width="100px" class="myImg">
-                    </div>
-                    <div class="col-md-10 col-sm-9 col-xs-8" style="min-height: 150px">
-                        <span class="name"><b>{{show.show.name}}</b>&nbsp;({{show.show.premiered.split('-')[0]}})</span>
-                        <span class="badge"><i class="fa fa-star"></i>&nbsp;{{show.show.rating.average || '?'}}</span><br>
-                        <span class="verdict"><b>Runtime: </b></span>
-                        <span class="verdict" *ngIf="show.show.runtime <= 5">{{show.show.runtime}} hours</span>
-                        <span class="verdict" *ngIf="show.show.runtime > 5">{{show.show.runtime}} minutes</span>
-                        <br>
-                        <span class="verdict"><b>Genre: </b></span>
-                        <span class="verdict" *ngFor="let genre of show.show.genres">{{genre}}&nbsp;</span>
-                        <br>
-                        <!-- <span class="">Seasons: </span>
+  <div class="container">
+    <a (click)="goBack()" class="backBtn"><i class="fa fa-long-arrow-left"></i></a>
+    <div (click)="currentId=show.show.id; showMore = !showMore;" *ngFor="let show of shows; let i = index;" class="row gutter-0 tile">
+      <div class="col-md-10 col-sm-8 col-xs-12">
+        <div class="col-md-2 col-sm-3 col-xs-4 imgClass">
+          <img src="{{show.show.image.medium || show.show.image}}" height="150px" width="100px" class="myImg">
+        </div>
+        <div class="col-md-10 col-sm-9 col-xs-8" style="min-height: 150px">
+          <span class="name"><b>{{show.show.name}}</b>&nbsp;({{show.show.premiered.split('-')[0]}})</span>
+          <span class="badge"><i class="fa fa-star"></i>&nbsp;{{show.show.rating.average || '?'}}</span><br>
+          <span class="verdict"><b>Runtime: </b></span>
+          <span class="verdict" *ngIf="show.show.runtime <= 5">{{show.show.runtime}} hours</span>
+          <span class="verdict" *ngIf="show.show.runtime > 5">{{show.show.runtime}} minutes</span>
+          <br>
+          <span class="verdict"><b>Genre: </b></span>
+          <span class="verdict" *ngFor="let genre of show.show.genres">{{genre}}&nbsp;</span>
+          <br>
+          <!-- <span class="">Seasons: </span>
                         <span class="">{{seasons[i].length || 0}}&nbsp;(~{{seasons[i][seasons[i].length-1 || 0].episodeOrder || 0}} episodes/season)</span> -->
-                        <span class="summary" [innerHTML]="show.show.summary"></span><br>
-                    </div>
-        </div>           
-        <div class="col-md-2 col-sm-2 col-xs-6" style="min-height: 150px">
-                <div *ngIf="subsList[resultIds[i]]; then unsubBlock; else subBlock"></div>
-                <ng-template #unsubBlock>
-                    <button (click)="unsubscribe(show.show.id)" class="btn subsBtn pull-right">unsubscribe</button>
-                </ng-template>
-                <ng-template #subBlock>
-                    <button (click)="subscribe(show.show.id)" class="btn subsBtn pull-right">subscribe</button>
-                </ng-template>
+          <span class="summary" [innerHTML]="show.show.summary"></span><br>
         </div>
-        <div  class="col-md-2 col-sm-2 col-xs-6">
-            <button routerLink="/episode" class="btn subsBtn pull-right">all episodes</button>
-        </div>
-        <div class="clearfix"></div>
+      </div>
+      <div class="col-md-2 col-sm-2 col-xs-6">
+        <div *ngIf="subsList[resultIds[i]]; then unsubBlock; else subBlock"></div>
+        <ng-template #unsubBlock>
+          <button (click)="unsubscribe(show.show.id)" class="btn subsBtn">unsubscribe</button>
+        </ng-template>
+        <ng-template #subBlock>
+          <button (click)="subscribe(show.show.id)" class="btn subsBtn">subscribe</button>
+        </ng-template>
+      </div>
+      <div class="col-md-2 col-sm-2 col-xs-6">
+        <a href="{{show.show.url}}+/episodes" target="_blank" class="btn subsBtn pull-right">all episodes</a>
+      </div>
+      <hr style="background-color:#008f76">
     </div>
-    </div>
+  </div>
 </div>

@@ -32,7 +32,7 @@ input::placeholder {
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: #008f76;
     font-family: "Roboto-Black";
-    font-size: 160px;
+    font-size: 140px;
   }
   ::-moz-placeholder { /* Firefox 19+ */
     color: #008f76;
@@ -59,20 +59,20 @@ input::placeholder {
 
 @media(max-width:1366px) {
     .searchBar {
-        font-size: 140px;
+        font-size: 130px;
     }
     input::placeholder {
-        font-size: 140px;
+        font-size: 130px;
     }
 }
 
 
 @media(max-width:1280px) {
     .searchBar {
-        font-size: 120px;
+        font-size: 110px;
     }
     input::placeholder {
-        font-size: 120px;
+        font-size: 110px;
     }
 }
 
@@ -88,9 +88,9 @@ input::placeholder {
 
 @media(max-width: 480px) {
     .searchBar {
-        font-size: 55px;
+        font-size: 45px;
     }
     input::placeholder {
-        font-size: 55px;
+        font-size: 45px;
     }
 }
