@@ -12,6 +12,7 @@ export class SubsComponent implements OnInit {
     allMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     verdict = [];
     showTip: boolean = true;
+    myAirDates = [];
     @Input() subsList;
     @Input() myIds;
     @Input() myShows;    
@@ -44,6 +45,7 @@ export class SubsComponent implements OnInit {
                     this.shows.push(posts);
                 });
             }
+            console.log(this.shows);
             for(let i = 0; i < this.myIds.length; i++) {
                 this.getEpisodes(this.myIds[i]).subscribe((posts) => {
                     let today = new Date();
@@ -73,11 +75,22 @@ export class SubsComponent implements OnInit {
                         this.verdict[this.myIds[i]] = "Next episode (Season "+season+" Episode "+episode+"): " + airdate[2] +" " + this.allMonths[parseInt(airdate[1])-1] + " " + airdate[0];
                     }
                     else {
-                        alert("say wha-what");
                         this.verdict.push("Episode releasing today");
                     }
+                    let mystr = airdate[0]+airdate[1]+airdate[2];
+                    this.myAirDates.push(mystr);
                 })
             }
+
+            //sorting such that the most recent release to be the first
+            //this.myAirDates.sort();
+            let junkShows = []; 
+            for(let i=  0; i < this.myAirDates.length; i++) {
+                alert(this.myAirDates[i]);
+            }
+            junkShows = this.shows;
+
+
         }
     }
 
