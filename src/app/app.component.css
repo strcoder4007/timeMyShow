@@ -1,55 +1,35 @@
 .searchBar {
-    height: 12vmax;
+    margin-top: 3rem;
+    height: 9rem;
     width: 100%;
     background-color: transparent;
     color: #008f76;
     font-family: "Roboto-Black";
-    font-size: 15vmin;
     outline: none;
     border: none;
     border-bottom: 3px solid #008f76;
 }
-input::placeholder {
+input, input::placeholder {
     color: #008f76;
     font-family: "Roboto-Black";
-    font-size: 15vmin;
+    font-size: 6rem;
 }
 .row1 {
     background-color: #222;
     width: 100%;
-    height: 12vmax;
-}
-.container1 {
-    height: 12vmax;
+    height: 12rem;
 }
 
-.footer {
+::-webkit-input-placeholder, ::-moz-placeholder, :-ms-input-placeholder, :-moz-placeholder { /* Chrome/Opera/Safari */
     color: #008f76;
-    font-family: "Roboto";
-    font-size: 17px;
+    font-family: "Roboto-Black";
+    font-size: 100px !important;
+  }
+:focus::-webkit-input-placeholder, :focus::-moz-placeholder, :focus:-ms-input-placeholder, :focus:-moz-placeholder { /* Chrome/Opera/Safari */
+  color: #008f76;
+  font-family: "Roboto-Black";
+  font-size: 100px !important;
 }
-
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: #008f76;
-    font-family: "Roboto-Black";
-    font-size: 15vmin;
-  }
-  ::-moz-placeholder { /* Firefox 19+ */
-    color: #008f76;
-    font-family: "Roboto-Black";
-    font-size: 15vmin;
-    opacity: 1;
-  }
-  :-ms-input-placeholder { /* IE 10+ */
-    color: #008f76;
-    font-family: "Roboto-Black";
-    font-size: 15vmin;
-  }
-  :-moz-placeholder { /* Firefox 18- */
-    color: #008f76;
-    font-family: "Roboto-Black";
-    font-size: 15vmin;
-  }
 
 .name {
     font-family: "Roboto";
@@ -57,8 +37,29 @@ input::placeholder {
     color: #008f76;
 }
 
-@media(max-width: 540px) {
-    .row1 {
-        margin-top: 10px;
-    }
+@media(max-width: 768px) {
+  .searchBar {
+    margin-top: 2rem;
+    height: 6rem;
+  }
+  input, input::placeholder {
+    font-size: 4rem;
+  }
+  .row1 {
+    height: 7rem;
+  }
+}
+
+
+@media(max-width: 576px) {
+  .searchBar {
+    margin-top: 1rem;
+    height: 4rem;
+  }
+  input, input::placeholder {
+    font-size: 3rem;
+  }
+  .row1 {
+    height: 5rem;
+  }
 }

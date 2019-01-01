@@ -1,11 +1,12 @@
 .content {
   margin-top: 50px;
+  white-space:normal;
 }
 
 .tile {
   width: 100%;
   background-color: #222;
-  font-family: "Roboto";
+  font-family: "Roboto", serif;
   font-size: 16px;
   color: lightgray;
   margin-bottom: 50px;
@@ -13,7 +14,7 @@
 }
 
 .subsBtn {
-  font-family: "Roboto-Regular";
+  font-family: "Roboto-Regular", serif;
   font-size: 15px;
   border-radius: 2px;
   border: 2px solid #008f76;
@@ -34,7 +35,7 @@
 .myLayout {
   background-color: #222;
   border: none;
-  min-height: calc(100vh 200px);
+  min-height: calc(100vh - 200px);
   max-height: none;
   width: 100%;
   padding-top: 20px;
@@ -48,18 +49,13 @@
 .badge {
   background-color: transparent;
   border: 1px solid #008f76;
-  font-family: "Roboto";
+  font-family: "Roboto", serif;
   font-size: 15px;
   color: #008f76;
 }
 
-.myImg {
-  position: absolute;
-  left: 0;
-}
-
 .name {
-  font-family: "Roboto-Black";
+  font-family: "Roboto-Black", serif;
   font-size: 20px;
   color: lightgray;
 }
@@ -69,15 +65,14 @@
 }
 
 
-
-@media(max-width: 540px) {
+@media(max-width: 576px) {
   .badge,
   .verdict,
   .summary {
-    font-size: 12px;
+    font-size: 13px;
   }
   .name {
-    font-size: 14px;
+    font-size: 16px;
   }
   .subsBtn {
     font-size: 12px;

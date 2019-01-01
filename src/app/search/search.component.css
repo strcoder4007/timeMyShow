@@ -31,8 +31,7 @@
     font-size: 15px;
     border-radius: 2px;
     border: 2px solid #008f76;
-    background-color: 
-    transparent;
+    background-color: transparent;
     color:#008f76;
     vertical-align: center;
     outline: none;
@@ -63,35 +62,32 @@
     font-size: 15px;
     color: #008f76;
 }
-.myImg {
-    position: absolute;
-    left: 0;
-}
+
+
 .name {
-    font-family: "Roboto-Black";
-    font-size: 20px;
-    color: lightgray;
+  font-family: "Roboto-Black";
+  font-size: 20px;
+  color: lightgray;
 }
 
-.verdict {
-    font-size: 16px;
+
+.summary {
+  text-align: justify;
 }
 
-.imgClass {
-    min-height: 150px;
-}
 
 @media(max-width: 540px) {
     .badge, .verdict, .summary {
-        font-size: 12px;
+        font-size: 13px;
     }
     .name {
-        font-size: 14px;
+        font-size: 16px;
     }
     .subsBtn {
         font-size: 12px;
         height: 35px;
         width: 100px;
+      margin-top: 0px;
     }
     .backBtn {
         font-size: 12px;
