@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -10,7 +10,7 @@ import { SearchComponent } from './search/search.component';
 
 const appRoutes: Routes = [
     { path: 'subs', component: SubsComponent },
-    { path: 'search', component: SearchComponent },  
+    { path: 'search', component: SearchComponent },
     { path: '',
         redirectTo: '/subs',
         pathMatch: 'full'
@@ -27,7 +27,7 @@ const appRoutes: Routes = [
     FormsModule,
     BrowserModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

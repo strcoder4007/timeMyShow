@@ -1,6 +1,8 @@
+
+import {map} from 'rxjs/operators';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+
 
 @Component({
   selector: 'app-subs',
@@ -21,11 +23,11 @@ export class SubsComponent implements OnInit {
     constructor(public http: Http) { }
 
     getShows(id: string) {
-        return this.http.get('http://api.tvmaze.com/shows/'+id).map(res => res.json());
+        return this.http.get('http://api.tvmaze.com/shows/'+id).pipe(map(res => res.json()));
     }
 
     getEpisodes(id: string) {
-        return this.http.get('http://api.tvmaze.com/shows/'+id+'/episodes').map(res => res.json());
+        return this.http.get('http://api.tvmaze.com/shows/'+id+'/episodes').pipe(map(res => res.json()));
     }
 
     unsubscribe(junk) {

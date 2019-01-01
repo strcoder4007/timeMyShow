@@ -1,6 +1,8 @@
+
+import {map} from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+
 import { Router } from '@angular/router';
 
 
@@ -20,7 +22,7 @@ export class AppComponent implements OnInit{
     }
 
     getposts() {
-        return this.http.get('').map(res => res.json());
+        return this.http.get('').pipe(map(res => res.json()));
     }
 
     eventHandler(ev) {

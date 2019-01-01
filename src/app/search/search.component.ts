@@ -1,6 +1,8 @@
+
+import {map} from 'rxjs/operators';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -35,11 +37,11 @@ export class SearchComponent implements OnInit {
 
 
     getshows() {
-        return this.http.get(this.baseUrl+'/search/shows?q='+this.show).map(res => res.json());
+        return this.http.get(this.baseUrl+'/search/shows?q='+this.show).pipe(map(res => res.json()));
     }
 
     getseasons(junk: number) {
-        return this.http.get(this.baseUrl+'/shows/'+junk+'/seasons').map(res => res.json());
+        return this.http.get(this.baseUrl+'/shows/'+junk+'/seasons').pipe(map(res => res.json()));
     }
 
     search(junk:string){
