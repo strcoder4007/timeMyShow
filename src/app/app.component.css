@@ -57,9 +57,15 @@ input, input::placeholder {
     height: 4rem;
   }
   input, input::placeholder {
-    font-size: 3rem;
+    font-size: 3.7rem;
   }
   .row1 {
     height: 5rem;
+  }
+}
+
+@media(max-width: 360px) {
+  input, input::placeholder {
+    font-size: 3rem;
   }
 }
