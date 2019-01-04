@@ -8,7 +8,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "git pull && ng build --prod --base-href /tms/ && sudo mv dist ../../html/ && sudo rm -r ../../html/tms && sudo mv ../../html/dist ../../html/tms"
   },
   "private": true,
   "dependencies": {
