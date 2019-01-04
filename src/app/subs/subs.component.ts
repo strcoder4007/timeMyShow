@@ -14,7 +14,10 @@ export class SubsComponent implements OnInit {
     allMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     verdict = [];
     showTip = true;
-    myAirDates = [];
+    pastAirDates = [];
+    futureAirDates = [];
+    airdateIdHash = [];
+    sortedShows = [];
     @Input() subsList;
     @Input() myIds;
     @Input() myShows;
@@ -86,20 +89,40 @@ export class SubsComponent implements OnInit {
                         this.verdict.push('Episode releasing today!');
                     }
                     const mystr = airdate[0] + airdate[1] + airdate[2];
-                    console.log("mystr", mystr);
-                    this.myAirDates.push(mystr);
+                    this.airdateIdHash[mystr] = this.myIds[i];
+                    if (myDay <= mystr) {
+                        this.futureAirDates.push(mystr);
+                    } else {
+                       this.pastAirDates.push(mystr);
+                    }
                 });
             }
 
             // sorting such that the most recent release to be the first
-            // this.myAirDates.sort();
-            let junkShows = [];
-            for (let i =  0; i < this.myAirDates.length; i++) {
-                alert(this.myAirDates[i]);
-            }
-            junkShows = this.shows;
 
-
+            setTimeout(() => {
+                this.pastAirDates.sort().reverse();
+                this.futureAirDates.sort();
+                /*console.log("past", this.pastAirDates);
+                console.log("future", this.futureAirDates);*/
+                for (let i =  0; i < this.futureAirDates.length; i++) {
+                  const curId = this.airdateIdHash[this.futureAirDates[i]];
+                  for (let j = 0; j < this.shows.length; j++) {
+                    if (this.shows[j].id === curId) {
+                      this.sortedShows.push(this.shows[j]);
+                    }
+                  }
+                }
+                for (let i =  0; i < this.pastAirDates.length; i++) {
+                  const curId = this.airdateIdHash[this.pastAirDates[i]];
+                  for (let j = 0; j < this.shows.length; j++) {
+                    if (this.shows[j].id === curId) {
+                      this.sortedShows.push(this.shows[j]);
+                    }
+                  }
+                }
+              console.log('sorted shows', this.sortedShows);
+            }, 2000);
         }
     }
 
