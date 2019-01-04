@@ -86,9 +86,9 @@ export class SubsComponent implements OnInit {
                         this.verdict[this.myIds[i]] = 'Next episode (Season ' + season + ' Episode ' + episode + '): ' +
                           airdate[2] + ' ' + this.allMonths[parseInt(airdate[1]) - 1] + ' ' + airdate[0];
                     } else {
-                        this.verdict.push('Episode releasing today!');
+                        this.verdict[this.myIds[i]] = 'Episode releasing today!';
                     }
-                    const mystr = airdate[0] + airdate[1] + airdate[2];
+                    const mystr = airdate[0] + '-' + airdate[1] + '-' + airdate[2];
                     this.airdateIdHash[mystr] = this.myIds[i];
                     if (myDay <= mystr) {
                         this.futureAirDates.push(mystr);
