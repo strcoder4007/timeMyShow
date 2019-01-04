@@ -68,7 +68,8 @@ export class SubsComponent implements OnInit {
                     let airdate = posts[posts.length - 1].airdate;
                     if (myDay > airdate) {
                         airdate = airdate.split('-');
-                        this.verdict[this.myIds[i]] = 'Ended on: ' + airdate[2] + ' ' + this.allMonths[parseInt(airdate[1]) - 1] + ' ' + airdate[0] + '\nLast episode: Season ' + posts[posts.length-1].season + ' Episode ' + posts[posts.length-1].number;
+                        this.verdict[this.myIds[i]] = 'Ended on: ' + airdate[2] + ' ' + this.allMonths[parseInt(airdate[1]) - 1] + ' ' + airdate[0] +
+                          '\nLast episode: Season ' + posts[posts.length - 1].season + ' Episode ' + posts[posts.length - 1].number;
                     } else if (myDay < airdate) {
                         let season, episode;
                         for (let j = posts.length - 1; j + 1; j--) {
@@ -79,11 +80,13 @@ export class SubsComponent implements OnInit {
                             }
                         }
                         airdate = airdate.split('-');
-                        this.verdict[this.myIds[i]] = 'Next episode (Season ' + season + ' Episode ' + episode + '): ' + airdate[2] + ' ' + this.allMonths[parseInt(airdate[1]) - 1] + ' ' + airdate[0];
+                        this.verdict[this.myIds[i]] = 'Next episode (Season ' + season + ' Episode ' + episode + '): ' +
+                          airdate[2] + ' ' + this.allMonths[parseInt(airdate[1]) - 1] + ' ' + airdate[0];
                     } else {
                         this.verdict.push('Episode releasing today!');
                     }
                     const mystr = airdate[0] + airdate[1] + airdate[2];
+                    console.log("mystr", mystr);
                     this.myAirDates.push(mystr);
                 });
             }
