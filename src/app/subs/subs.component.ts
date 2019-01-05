@@ -14,8 +14,8 @@ export class SubsComponent implements OnInit {
     allMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     verdict = [];
     showTip = true;
-    pastAirDates = [];
-    futureAirDates = [];
+    pastAirDates = new Set();
+    futureAirDates = new Set();
     airdateIdHash = [];
     sortedShows = [];
     @Input() subsList;
@@ -42,6 +42,7 @@ export class SubsComponent implements OnInit {
             this.verdict.push('');
         }
         if (this.myIds != '') {
+            alert(this.myIds.length);
             for (let i = 0; i < this.myIds.length; i++) {
                 this.getShowInfo(this.myIds[i]).subscribe((posts) => {
                     if (posts.summary.length > 340) {
@@ -91,38 +92,25 @@ export class SubsComponent implements OnInit {
                     const mystr = airdate[0] + '-' + airdate[1] + '-' + airdate[2];
                     this.airdateIdHash[mystr] = this.myIds[i];
                     if (myDay <= mystr) {
-                        this.futureAirDates.push(mystr);
+                        this.futureAirDates.add(mystr);
                     } else {
-                       this.pastAirDates.push(mystr);
+                       this.pastAirDates.add(mystr);
                     }
-                });
-            }
-
-            // sorting such that the most recent release to be the first
-
-            setTimeout(() => {
-                this.pastAirDates.sort().reverse();
-                this.futureAirDates.sort();
-                /*console.log("past", this.pastAirDates);
-                console.log("future", this.futureAirDates);*/
-                for (let i =  0; i < this.futureAirDates.length; i++) {
-                  const curId = this.airdateIdHash[this.futureAirDates[i]];
-                  for (let j = 0; j < this.shows.length; j++) {
-                    if (this.shows[j].id === curId) {
-                      this.sortedShows.push(this.shows[j]);
+                    console.log(this.futureAirDates.size + this.pastAirDates.size);
+                    if (this.futureAirDates.size + this.pastAirDates.size === this.myIds.length) {
+                      let junkArray = Array.from(this.futureAirDates).sort().concat(Array.from(this.pastAirDates).sort().reverse());
+                      this.sortedShows = [];
+                      for (let j =  0; j < junkArray.length; j++) {
+                        const curId = this.airdateIdHash[junkArray[j]];
+                        for (let k = 0; k < this.shows.length; k++) {
+                          if (this.shows[k].id === curId) {
+                            this.sortedShows.push(this.shows[k]);
+                          }
+                        }
+                      }
                     }
-                  }
-                }
-                for (let i =  0; i < this.pastAirDates.length; i++) {
-                  const curId = this.airdateIdHash[this.pastAirDates[i]];
-                  for (let j = 0; j < this.shows.length; j++) {
-                    if (this.shows[j].id === curId) {
-                      this.sortedShows.push(this.shows[j]);
-                    }
-                  }
-                }
-              console.log('sorted shows', this.sortedShows);
-            }, 2000);
+                }); // getepisode call
+            } // for loop
         }
     }
 
