@@ -32,12 +32,12 @@ export class AppComponent implements OnInit {
     }
 
     subscribe(ev) {
-        if (localStorage.myShows == undefined) {
+        if (localStorage.myShows === undefined) {
             localStorage.setItem('myShows', '');
         }
         this.myShows = localStorage.getItem('myShows');
-        if (this.subsList[ev] == false) {
-            if (this.myShows == undefined || this.myShows == '') {
+        if (this.subsList[ev] === false) {
+            if (this.myShows === undefined || this.myShows === '') {
                 this.myShows = String(ev);
             } else {
                 this.myShows = this.myShows + ',' + String(ev);
@@ -75,9 +75,9 @@ export class AppComponent implements OnInit {
     }
 
     toggleSearch() {
-        this.showSearch = false;
-        this.router.navigate(['/subs']);
         this.show = '';
+        this.showSearch = false;
+        this.router.navigate(['/']);
     }
 
     ngOnInit() {
@@ -94,8 +94,6 @@ export class AppComponent implements OnInit {
                 this.subsList[this.myIds[i]] = true;
             }
         }
-        this.getposts().subscribe((posts) => {
-        });
     }
 
 }

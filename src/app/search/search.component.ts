@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit {
     showImage = false;
     verdict = [];
     shows = [];
-  allMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    allMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     statusColor: string;
     colors = [];
     seasons = [];
@@ -52,6 +52,7 @@ export class SearchComponent implements OnInit {
     }
 
     search(junk: string) {
+        console.log('searching for:', junk);
         this.getShows().subscribe((posts) => {
             for (let i = 0; i < posts.length; i++) {
                 if (posts[i].show.premiered == null) {
@@ -72,51 +73,49 @@ export class SearchComponent implements OnInit {
             }
             this.shows = posts;
 
-          for (let i = 0; i < this.shows.length; i++) {
-            this.getEpisodes(this.shows[i].show.id).subscribe((posts) => {
-              const today = new Date();
-              let month = '';
-              month += today.getMonth() + 1;
-              if (month.length == 1) {
-                month = '0' + month;
-              }
-              let day = '';
-              day += today.getDate();
-              if (day.length == 1) {
-                day = '0' + day;
-              }
-              const myDay = today.getFullYear() + '-' + month + '-' + day;
-              let airdate = posts[posts.length - 1].airdate;
-              if (myDay > airdate) {
-                airdate = airdate.split('-');
-                this.verdict[this.shows[i].show.id] = 'Ended on: ' + airdate[2] + ' ' + this.allMonths[parseInt(airdate[1]) - 1] + ' ' + airdate[0] + '\nLast episode: Season ' + posts[posts.length-1].season + ' Episode ' + posts[posts.length-1].number;
-              } else if (myDay < airdate) {
-                let season, episode;
-                for (let j = posts.length - 1; j + 1; j--) {
-                  if (myDay > posts[j].airdate) {
-                    break;
-                  } else {
-                    airdate = posts[j].airdate, season = posts[j].season, episode = posts[j].number;
-                  }
-                }
-                airdate = airdate.split('-');
-                this.verdict[this.shows[i].show.id] = 'Next episode (Season ' + season + ' Episode ' + episode + '): ' + airdate[2] + ' ' + this.allMonths[parseInt(airdate[1]) - 1] + ' ' + airdate[0];
-              } else {
-                this.verdict.push('Episode releasing today!');
-              }
-            });
-          }
-
-
+            for (let i = 0; i < this.shows.length; i++) {
+                this.getEpisodes(this.shows[i].show.id).subscribe((posts) => {
+                    if (posts.length) {
+                        const today = new Date();
+                        let month = '';
+                        month += today.getMonth() + 1;
+                        if (month.length == 1) {
+                          month = '0' + month;
+                        }
+                        let day = '';
+                        day += today.getDate();
+                        if (day.length == 1) {
+                          day = '0' + day;
+                        }
+                        const myDay = today.getFullYear() + '-' + month + '-' + day;
+                        let airdate;
+                        // console.log("No. of episodes found: ", posts.length);
+                        if (posts[posts.length - 1].airdate !== null) {
+                          airdate = posts[posts.length - 1].airdate;
+                          if (myDay > airdate) {
+                            airdate = airdate.split('-');
+                            this.verdict[this.shows[i].show.id] = 'Ended on: ' + airdate[2] + ' ' + this.allMonths[parseInt(airdate[1]) - 1] + ' ' + airdate[0] + '\nLast episode: Season ' + posts[posts.length-1].season + ' Episode ' + posts[posts.length-1].number;
+                          } else if (myDay < airdate) {
+                            let season, episode;
+                            for (let j = posts.length - 1; j + 1; j--) {
+                              if (myDay > posts[j].airdate) {
+                                break;
+                              } else {
+                                airdate = posts[j].airdate, season = posts[j].season, episode = posts[j].number;
+                              }
+                            }
+                            airdate = airdate.split('-');
+                            this.verdict[this.shows[i].show.id] = 'Next episode (Season ' + season + ' Episode ' + episode + '): ' + airdate[2] + ' ' + this.allMonths[parseInt(airdate[1]) - 1] + ' ' + airdate[0];
+                          } else {
+                            this.verdict[this.shows[i].show.id] = 'Episode releasing today!';
+                          }
+                        } else { // if airdate is null
+                          this.verdict[this.shows[i].show.id] = 'Ended a long time ago.';
+                        }
+                    }
+                });
+            }
         });
-
-
-
-
-
-
-
-
     }
 
     searchSeasons(id: number) {
@@ -138,11 +137,10 @@ export class SearchComponent implements OnInit {
     }
 
     ngOnInit() {
-        for (let i = 0; i < 1000; i++) {
+        for (let i = 0; i < 100000; i++) {
           this.verdict.push('');
         }
         this.colors['Running'] = '#1db954';
         this.colors['Ended'] = '#f44336';
-        this.search(this.show);
     }
 }

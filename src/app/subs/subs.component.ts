@@ -38,11 +38,11 @@ export class SubsComponent implements OnInit {
     }
 
     ngOnInit() {
-        for (let i = 0; i < 100; i++) {
+        console.log('entering subs');
+        for (let i = 0; i < 100000; i++) {
             this.verdict.push('');
         }
         if (this.myIds != '') {
-            alert(this.myIds.length);
             for (let i = 0; i < this.myIds.length; i++) {
                 this.getShowInfo(this.myIds[i]).subscribe((posts) => {
                     if (posts.summary.length > 340) {
@@ -96,18 +96,18 @@ export class SubsComponent implements OnInit {
                     } else {
                        this.pastAirDates.add(mystr);
                     }
-                    console.log(this.futureAirDates.size + this.pastAirDates.size);
                     if (this.futureAirDates.size + this.pastAirDates.size === this.myIds.length) {
-                      let junkArray = Array.from(this.futureAirDates).sort().concat(Array.from(this.pastAirDates).sort().reverse());
-                      this.sortedShows = [];
-                      for (let j =  0; j < junkArray.length; j++) {
-                        const curId = this.airdateIdHash[junkArray[j]];
-                        for (let k = 0; k < this.shows.length; k++) {
-                          if (this.shows[k].id === curId) {
-                            this.sortedShows.push(this.shows[k]);
-                          }
+                        const junkArray = Array.from(this.futureAirDates).sort().concat(Array.from(this.pastAirDates).sort().reverse());
+                        this.sortedShows = [];
+                        for (let j =  0; j < junkArray.length; j++) {
+                            const curId = this.airdateIdHash[junkArray[j]];
+                            for (let k = 0; k < this.shows.length; k++) {
+                                if (this.shows[k].id === parseInt(curId)) {
+                                    this.sortedShows.push(this.shows[k]);
+                                }
+                            }
                         }
-                      }
+                        //this.shows = this.sortedShows;
                     }
                 }); // getepisode call
             } // for loop
