@@ -53,6 +53,8 @@ export class SearchComponent implements OnInit {
     }
 
     search(junk: string) {
+        this.shows = [];
+        this.resultIds = [];
         this.getShows().subscribe((posts) => {
             for (let i = 0; i < posts.length; i++) {
                 if (posts[i].show.premiered == null) {
@@ -67,24 +69,26 @@ export class SearchComponent implements OnInit {
                     }
                 }
                 this.resultIds.push(parseInt(posts[i].show.id));
+                if (this.resultIds.length > 10) {
+                  this.resultIds = this.resultIds.slice(1, this.resultIds.length);
+                }
                 if (posts[i].show.image == null) {
                     posts[i].show.image = 'assets/replacement.png';
                 }
             }
             this.shows = posts;
-            console.log('search results', this.shows);
             for (let i = 0; i < this.shows.length; i++) {
                 this.getEpisodes(this.shows[i].show.id).subscribe((posts) => {
                     if (posts.length) {
                         const today = new Date();
                         let month = '';
                         month += today.getMonth() + 1;
-                        if (month.length == 1) {
+                        if (month.length === 1) {
                           month = '0' + month;
                         }
                         let day = '';
                         day += today.getDate();
-                        if (day.length == 1) {
+                        if (day.length === 1) {
                           day = '0' + day;
                         }
                         const myDay = today.getFullYear() + '-' + month + '-' + day;
