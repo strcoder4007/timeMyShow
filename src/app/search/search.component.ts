@@ -34,7 +34,7 @@ export class SearchComponent implements OnInit {
     ngOnChanges(changes: SimpleChanges) {
         if (this.show === '') {
             this.goBack();
-        } else if (this.show !== undefined) {
+        } else if (this.show !== undefined && changes['show'] !== undefined) {
             this.search(this.show);
         }
     }

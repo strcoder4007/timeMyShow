@@ -76,6 +76,7 @@ export class AppComponent implements OnInit {
 
     toggleSearch() {
         this.show = '';
+        document.getElementById("searchBar").focus();
         this.showSearch = false;
         this.router.navigate(['/']);
     }

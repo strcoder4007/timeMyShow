@@ -12,8 +12,7 @@ const appRoutes: Routes = [
     { path: '', component: SubsComponent },
     { path: 'search', component: SearchComponent },
     { path: '**',
-        redirectTo: '',
-        pathMatch: 'full'
+        redirectTo: ''
     }
   ];
 
