@@ -1,6 +1,6 @@
 
 import {map} from 'rxjs/operators';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, SimpleChanges} from '@angular/core';
 import { Http } from '@angular/http';
 
 import { Router } from '@angular/router';
@@ -31,10 +31,10 @@ export class SearchComponent implements OnInit {
 
     constructor(public http: Http, public router: Router) { }
 
-    ngOnChanges() {
+    ngOnChanges(changes: SimpleChanges) {
         if (this.show === '') {
             this.goBack();
-        } else {
+        } else if (this.show !== undefined) {
             this.search(this.show);
         }
     }
@@ -72,7 +72,7 @@ export class SearchComponent implements OnInit {
                 }
             }
             this.shows = posts;
-
+            console.log('search results', this.shows);
             for (let i = 0; i < this.shows.length; i++) {
                 this.getEpisodes(this.shows[i].show.id).subscribe((posts) => {
                     if (posts.length) {
@@ -136,6 +136,7 @@ export class SearchComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log('search component');
         for (let i = 0; i < 100000; i++) {
           this.verdict.push('');
         }

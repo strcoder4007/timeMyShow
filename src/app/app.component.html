@@ -1,9 +1,9 @@
 <div class="row gutter-0 row1 mt-3">
     <div class="container">
-        <input type="text"  [(ngModel)]="show" placeholder="timemyshow" class="searchBar" routerLink="/search" (keypress)=eventHandler($event) autofocus>
+        <input type="text"  [(ngModel)]="show" placeholder="timemyshow" class="searchBar" (keypress)=eventHandler($event) autofocus>
     </div>
 </div>
-<div *ngIf="showSearch; else subBlock">
+<div *ngIf="show !== '' && show !== undefined; else subBlock">
     <app-search (emitSearchToggle)="toggleSearch()" [myShows]="myShows" [subsList]="subsList" [myIds]="myIds" [show]="show" (emitUnsubSearch)="unsubscribe($event)" (emitSubSearch)="subscribe($event)"></app-search>
 </div>
 <ng-template #subBlock>

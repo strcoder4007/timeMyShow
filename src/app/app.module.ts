@@ -9,10 +9,10 @@ import { SubsComponent } from './subs/subs.component';
 import { SearchComponent } from './search/search.component';
 
 const appRoutes: Routes = [
-    { path: 'subs', component: SubsComponent },
+    { path: '', component: SubsComponent },
     { path: 'search', component: SearchComponent },
-    { path: '',
-        redirectTo: '/subs',
+    { path: '**',
+        redirectTo: '',
         pathMatch: 'full'
     }
   ];

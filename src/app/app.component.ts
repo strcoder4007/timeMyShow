@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
 
     eventHandler(ev) {
         if ((ev.keyCode >= 65 && ev.keyCode <= 90) || (ev.keyCode >= 97 && ev.keyCode <= 122) ) {
-          this.showSearch = true;
+            this.showSearch = true;
         }
     }
 
@@ -81,6 +81,7 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log('app component');
         for (let i = 0; i <= 100000; i++) {
             this.subsList.push(false);
         }
