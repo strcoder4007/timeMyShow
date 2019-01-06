@@ -38,7 +38,6 @@ export class SubsComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('entering subs');
         for (let i = 0; i < 100000; i++) {
             this.verdict.push('');
         }
@@ -54,7 +53,6 @@ export class SubsComponent implements OnInit {
                     this.shows.push(posts);
                 });
             }
-            console.log(this.shows);
             for (let i = 0; i < this.myIds.length; i++) {
                 this.getEpisodes(this.myIds[i]).subscribe((posts) => {
                     const today = new Date();

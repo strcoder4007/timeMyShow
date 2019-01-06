@@ -32,10 +32,11 @@ export class SearchComponent implements OnInit {
     constructor(public http: Http, public router: Router) { }
 
     ngOnChanges() {
-        if (this.show == '') {
+        if (this.show === '') {
             this.goBack();
+        } else {
+            this.search(this.show);
         }
-        this.search(this.show);
     }
 
 
@@ -52,7 +53,6 @@ export class SearchComponent implements OnInit {
     }
 
     search(junk: string) {
-        console.log('searching for:', junk);
         this.getShows().subscribe((posts) => {
             for (let i = 0; i < posts.length; i++) {
                 if (posts[i].show.premiered == null) {
@@ -89,12 +89,11 @@ export class SearchComponent implements OnInit {
                         }
                         const myDay = today.getFullYear() + '-' + month + '-' + day;
                         let airdate;
-                        // console.log("No. of episodes found: ", posts.length);
                         if (posts[posts.length - 1].airdate !== null) {
                           airdate = posts[posts.length - 1].airdate;
                           if (myDay > airdate) {
                             airdate = airdate.split('-');
-                            this.verdict[this.shows[i].show.id] = 'Ended on: ' + airdate[2] + ' ' + this.allMonths[parseInt(airdate[1]) - 1] + ' ' + airdate[0] + '\nLast episode: Season ' + posts[posts.length-1].season + ' Episode ' + posts[posts.length-1].number;
+                            this.verdict[this.shows[i].show.id] = 'Ended on: ' + airdate[2] + ' ' + this.allMonths[parseInt(airdate[1]) - 1] + ' ' + airdate[0] + '\nLast episode: Season ' + posts[posts.length - 1].season + ' Episode ' + posts[posts.length - 1].number;
                           } else if (myDay < airdate) {
                             let season, episode;
                             for (let j = posts.length - 1; j + 1; j--) {
